@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>09C862B8-40A3-4FEC-8271-A067CE19BBF4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Survey</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>928C9E34027D8CF4313EB0D00FBC04F04BED4C1B</key>
+		<string>https://github.com/ammalesy/SurveyProject.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Survey/Survey.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>928C9E34027D8CF4313EB0D00FBC04F04BED4C1B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ammalesy/SurveyProject.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>928C9E34027D8CF4313EB0D00FBC04F04BED4C1B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>928C9E34027D8CF4313EB0D00FBC04F04BED4C1B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SurveyProject</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,6 @@
+framework module SCLAlertView {
+  umbrella header "Pods-Survey-SCLAlertView-umbrella.h"
+
+  export *
+  module * { export * }
+}
