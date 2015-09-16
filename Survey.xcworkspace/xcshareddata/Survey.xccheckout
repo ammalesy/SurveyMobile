@@ -10,31 +10,31 @@
 	<string>Survey</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>928C9E34027D8CF4313EB0D00FBC04F04BED4C1B</key>
-		<string>https://github.com/ammalesy/SurveyProject.git</string>
+		<key>2E195C0E8A22DFDD5FF033087D39E9C862737F4A</key>
+		<string>https://github.com/ammalesy/SurveyMobile.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Survey/Survey.xcworkspace</string>
+	<string>Survey.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>928C9E34027D8CF4313EB0D00FBC04F04BED4C1B</key>
-		<string>../..</string>
+		<key>2E195C0E8A22DFDD5FF033087D39E9C862737F4A</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ammalesy/SurveyProject.git</string>
+	<string>https://github.com/ammalesy/SurveyMobile.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>928C9E34027D8CF4313EB0D00FBC04F04BED4C1B</string>
+	<string>2E195C0E8A22DFDD5FF033087D39E9C862737F4A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>928C9E34027D8CF4313EB0D00FBC04F04BED4C1B</string>
+			<string>2E195C0E8A22DFDD5FF033087D39E9C862737F4A</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SurveyProject</string>
+			<string>SurveyMobile</string>
 		</dict>
 	</array>
 </dict>
