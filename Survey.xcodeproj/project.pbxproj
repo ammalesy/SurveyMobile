@@ -33,6 +33,7 @@
 		52CDD93F1B998F1B00E462A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52CDD93E1B998F1B00E462A3 /* Images.xcassets */; };
 		52CDD9421B998F1B00E462A3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CDD9401B998F1B00E462A3 /* LaunchScreen.xib */; };
 		52CDD94E1B998F1B00E462A3 /* SurveyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDD94D1B998F1B00E462A3 /* SurveyTests.swift */; };
+		52F5CFE41BAAE03D008EE59F /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5CFE31BAAE03D008EE59F /* SubmitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		52CDD9471B998F1B00E462A3 /* SurveyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurveyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CDD94C1B998F1B00E462A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52CDD94D1B998F1B00E462A3 /* SurveyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTests.swift; sourceTree = "<group>"; };
+		52F5CFE31BAAE03D008EE59F /* SubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 		76D862BE129D867B84F554F6 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA54E8BEBEDD02D2D37A93A1 /* Pods-Survey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Survey/Pods-Survey.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 			children = (
 				522DE30E1BA7FD9500349045 /* SurveyViewController.swift */,
 				18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */,
+				52F5CFE31BAAE03D008EE59F /* SubmitViewController.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				529959DF1BA711EB0058EACC /* MenuTableViewCell.swift in Sources */,
 				529959E61BA720350058EACC /* MAnswer.swift in Sources */,
 				529959EB1BA7B6040058EACC /* AlertUtil.swift in Sources */,
+				52F5CFE41BAAE03D008EE59F /* SubmitViewController.swift in Sources */,
 				52CDD9351B998F1A00E462A3 /* AppDelegate.swift in Sources */,
 				529959ED1BA7BA200058EACC /* ColorUtil.swift in Sources */,
 				529959E21BA711EB0058EACC /* SideMenuNavigationController.swift in Sources */,

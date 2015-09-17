@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
+        var f:UISearchController
+        
 //        let user =  [
 //            "u_firstname":"Ammales",
 //            "u_surname":"Yamsompong",
