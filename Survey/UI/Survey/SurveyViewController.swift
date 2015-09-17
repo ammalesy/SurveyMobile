@@ -15,20 +15,26 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var numberOfQuestion:NSInteger!
     var question:MQuestion!
     var pageIndex:NSInteger!
+    var mainController:MainSurveyViewController!
 
+    @IBOutlet weak var questionLb: UILabel!
+    @IBOutlet weak var seqLb: UILabel!
 
-    @IBOutlet weak var titleQuestionLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
-        titleQuestionLb.text = String(question.pAq_description)
-        
+        questionLb.text = String(question.pAq_description)
+        seqLb.text = String(pageIndex + 1)
         
         
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.mainController.navigationItem.title = "Question \(self.pageIndex + 1) / \(self.mainController.survey.pQuestions.count)"
+        });
         
     }
 
@@ -51,14 +57,21 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return question.pAnswers.count
+        
+
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath.row) as! MAnswer
         
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
-        cell.textLabel?.text = "\(indexPath.row + 1). \(answer.pAa_description)"
+        let cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
+        cell.seq.text = "\(indexPath.row + 1)"
+        cell.ansDescription.text = "\(answer.pAa_description)"
 
         
         return cell

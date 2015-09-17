@@ -15,4 +15,7 @@ class ColorUtil: NSObject {
     class func orangeStrong()->(UIColor!){
         return UIColor(red: 255/255, green: 151/255, blue: 86/255, alpha: 1)
     }
+    class func veryLightGray()->(UIColor!){
+        return UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+    }
 }

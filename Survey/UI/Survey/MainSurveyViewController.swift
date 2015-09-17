@@ -27,7 +27,7 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         
-        let startingViewController = self.viewController(0) as (SurveyViewController,UIViewController,isLast:Bool)
+        let startingViewController = self.viewController(0) as SurveyViewController
         self.pageViewController.setViewControllers([startingViewController.0], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
         self.pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)
         
@@ -41,13 +41,10 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
 
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
         
-        var index:NSInteger = (pendingViewControllers[0] as! SurveyViewController).pageIndex
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.navigationItem.title = "Question \(index + 1) / \(self.survey.pQuestions.count)"
-        });
         
     }
+    
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         var index:NSInteger = (viewController as! SurveyViewController).pageIndex
@@ -57,11 +54,7 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         }
         
         index--
-        var result = self.viewController(index) as (SurveyViewController,UIViewController,isLast:Bool)
-        if(result.isLast){
-            return result.1
-        }
-        return result.0
+        return self.viewController(index) as SurveyViewController
         
     }
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
@@ -78,29 +71,25 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
             return nil
         }
         
-        var result = self.viewController(index) as (SurveyViewController,UIViewController,isLast:Bool)
-        if(result.isLast){
-            return result.1
-        }
-        return result.0
+        return self.viewController(index) as SurveyViewController
         
     }
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return survey.pQuestions.count + 1
+        
+        if(survey.pQuestions.count > 10) {
+            return 10
+        }else{
+            return survey.pQuestions.count
+        }
     }
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
     
-    func viewController(atIndex:NSInteger!) -> (SurveyViewController,UIViewController,isLast:Bool)!
+    func viewController(atIndex:NSInteger!) -> (SurveyViewController)!
     {
-        if ((survey.pQuestions.count == 0)) {
+        if ((survey.pQuestions.count == 0) || atIndex >= survey.pQuestions.count) {
             return nil
-        }
-        
-        if(atIndex >= survey.pQuestions.count) {
-            var last:SubmitViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SubmitViewController") as! SubmitViewController
-            return (SurveyViewController(),last,false)
         }
         
         let pageContentViewController:SurveyViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SurveyViewController") as! SurveyViewController
@@ -108,10 +97,9 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         pageContentViewController.question = self.survey.pQuestions.objectAtIndex(atIndex) as! MQuestion
         pageContentViewController.pageIndex = atIndex
         pageContentViewController.numberOfQuestion = survey.pQuestions.count
+        pageContentViewController.mainController = self
 
-        
-    
-        return (pageContentViewController,UIViewController(),false)
+        return pageContentViewController
     }
 
     override func didReceiveMemoryWarning() {
