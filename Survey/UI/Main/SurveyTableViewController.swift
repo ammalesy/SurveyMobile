@@ -139,15 +139,21 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate {
         var survey:MSurvey = surveys.objectAtIndex(indexPath.row) as! MSurvey
         AlertUtil.showInformation { (nameTxt, surnameTxt, ageTxt, emailTxt, sexSeg) -> Void in
       
-            if( nameTxt.text != "" &&
-                surnameTxt.text != "" &&
-                ageTxt.text != "" &&
-                emailTxt.text != "" )
-            {
+//            if( nameTxt.text != "" &&
+//                surnameTxt.text != "" &&
+//                ageTxt.text != "" &&
+//                emailTxt.text != "" )
+//            {
+                var user:MUser = MUser()
+                user.pU_firstname = "\(nameTxt.text) \(surnameTxt.text)"
+                user.pU_age = ageTxt.text.toInt()
+                user.pU_email = emailTxt.text
                 var sb = UIStoryboard(name: "Main",bundle: nil);
-                var controller:SurveyViewController = sb.instantiateViewControllerWithIdentifier("SurveyViewController") as! SurveyViewController
+                var controller:MainSurveyViewController = sb.instantiateViewControllerWithIdentifier("MainSurveyViewController") as! MainSurveyViewController
+                controller.user = user
+                controller.survey = survey
                 self.navigationController?.pushViewController(controller, animated: true)
-            }
+            //}
         }
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
