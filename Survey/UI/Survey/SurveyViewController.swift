@@ -72,9 +72,16 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
         cell.seq.text = "\(indexPath.row + 1)"
         cell.ansDescription.text = "\(answer.pAa_description)"
-        cell.checked = answer.pChecked
-
         
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            if(answer.pChecked){
+                cell.markImageView.image = UIImage(named: "mark")
+            }else{
+                cell.markImageView.image = UIImage(named: "not-mark")
+            }
+        });
+        
+
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

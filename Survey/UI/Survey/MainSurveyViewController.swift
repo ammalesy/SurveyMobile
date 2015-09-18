@@ -10,6 +10,7 @@ import UIKit
 
 class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,UIPageViewControllerDelegate {
     
+    var doneButton:UIBarButtonItem!
     var user:MUser!
     var survey:MSurvey!
     
@@ -17,6 +18,10 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "sendSurvey:")
+        self.navigationItem.rightBarButtonItem = doneButton
+//        doneButton.enabled = false
         
         var pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
@@ -38,11 +43,19 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         self.navigationItem.title = "Question 1 / \(self.survey.pQuestions.count)"
         
     }
+    
+    func sendSurvey(buttonItem:UIBarButtonItem) {
+        
+        var mul:NSMutableArray = survey.pQuestions;
+        
+    }
 
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
         
-        
-        
+//        var controller:SurveyViewController = pendingViewControllers[0] as! SurveyViewController
+//        if((controller.pageIndex + 1) == survey.pQuestions.count){
+//            doneButton.enabled = true
+//        }
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {

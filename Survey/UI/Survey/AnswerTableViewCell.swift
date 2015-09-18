@@ -26,11 +26,7 @@ class AnswerTableViewCell: UITableViewCell {
             ct_right_backgroundView.constant = 100
         }
         
-        if(self.checked){
-            self.markImageView.image = UIImage(named: "mark")
-        }else{
-            self.markImageView.image = UIImage(named: "not-mark")
-        }
+        
         
     }
 

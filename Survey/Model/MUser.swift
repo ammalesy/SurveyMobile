@@ -15,6 +15,7 @@ class MUser: Model,NSCoding {
     var pU_sex:NSInteger!
     var pU_age:NSInteger!
     var pU_email:NSString!
+    var pU_tel:NSString!
     
     override init() {}
     required init(coder aDecoder: NSCoder) {
@@ -24,6 +25,7 @@ class MUser: Model,NSCoding {
         self.pU_sex  = aDecoder.decodeObjectForKey("pU_sex") as? NSInteger
         self.pU_age  = aDecoder.decodeObjectForKey("pU_age") as? NSInteger
         self.pU_email  = aDecoder.decodeObjectForKey("pU_email") as? NSString
+        self.pU_tel  = aDecoder.decodeObjectForKey("pU_tel") as? NSString
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -44,6 +46,9 @@ class MUser: Model,NSCoding {
         }
         if let val = self.pU_email{
             aCoder.encodeObject(val, forKey: "pU_email")
+        }
+        if let val = self.pU_tel{
+            aCoder.encodeObject(val, forKey: "pU_tel")
         }
     }
     

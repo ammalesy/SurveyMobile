@@ -14,6 +14,7 @@
 		5222FC541BA4503E00DB5C33 /* CachingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222FC531BA4503E00DB5C33 /* CachingControl.swift */; };
 		5222FC561BA451AA00DB5C33 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222FC551BA451AA00DB5C33 /* Model.swift */; };
 		522DE30F1BA7FD9500349045 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522DE30E1BA7FD9500349045 /* SurveyViewController.swift */; };
+		524D55AD1BAC2D7F0095F896 /* MSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D55AC1BAC2D7F0095F896 /* MSync.swift */; };
 		52735E211BA7DD9A00FF263A /* MUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52735E201BA7DD9A00FF263A /* MUser.swift */; };
 		529959DD1BA711EB0058EACC /* SurveyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959D61BA711EB0058EACC /* SurveyTableViewCell.swift */; };
 		529959DE1BA711EB0058EACC /* SurveyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959D71BA711EB0058EACC /* SurveyTableViewController.swift */; };
@@ -55,6 +56,7 @@
 		5222FC531BA4503E00DB5C33 /* CachingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingControl.swift; sourceTree = "<group>"; };
 		5222FC551BA451AA00DB5C33 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		522DE30E1BA7FD9500349045 /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
+		524D55AC1BAC2D7F0095F896 /* MSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSync.swift; sourceTree = "<group>"; };
 		52735E201BA7DD9A00FF263A /* MUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUser.swift; sourceTree = "<group>"; };
 		529635881B9995950065842E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Pods-Survey/Alamofire.framework"; sourceTree = "<group>"; };
 		5296358A1B9995980065842E /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = "Pods/../build/Debug-iphoneos/Pods-Survey/SCLAlertView.framework"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				5222FC531BA4503E00DB5C33 /* CachingControl.swift */,
 				5222FC551BA451AA00DB5C33 /* Model.swift */,
 				52735E201BA7DD9A00FF263A /* MUser.swift */,
+				524D55AC1BAC2D7F0095F896 /* MSync.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524D55AD1BAC2D7F0095F896 /* MSync.swift in Sources */,
 				5222FC521BA44F5800DB5C33 /* MSurvey.swift in Sources */,
 				529959E41BA71F890058EACC /* MQuestion.swift in Sources */,
 				52B8681F1BA1EDB300A6B1BB /* ENSideMenu.swift in Sources */,
