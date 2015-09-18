@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class MSurvey: Model,NSCoding {
+class MSurvey: Model,NSCoding,NSCopying {
     var pSm_id:NSString!
     var pSm_name:NSString!
     var pSm_description:NSString!
@@ -22,9 +22,18 @@ class MSurvey: Model,NSCoding {
     var pQuestions:NSMutableArray!
     
     override init() {}
-    
-    func loadQuestions(completionHandler: (NSMutableArray) -> Void){
-    
+
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        let obj:MSurvey = MSurvey()
+        obj.pSm_id = self.pSm_id
+        obj.pSm_name = self.pSm_name
+        obj.pSm_description = self.pSm_description
+        obj.pSm_table_code = self.pSm_table_code
+        obj.pSm_order_column = self.pSm_order_column
+        obj.pSm_update_at = self.pSm_update_at
+        obj.pCountUser = self.pCountUser
+        obj.pQuestions = self.pQuestions
+        return obj
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -120,6 +129,7 @@ class MSurvey: Model,NSCoding {
                                     m_answer.pAq_id_ref = survey.handleNullString(answers[indexAns].objectForKey("aq_id_ref")!)
                                     m_answer.pType = survey.handleNullString(answers[indexAns].objectForKey("type")!)
                                     m_answer.pActive = survey.handleNullString(answers[indexAns].objectForKey("active")!)
+                                    m_answer.pChecked = false
                                     
                                     listAnswer.addObject(m_answer)
                                 }

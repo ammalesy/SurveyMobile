@@ -151,7 +151,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate {
                 var sb = UIStoryboard(name: "Main",bundle: nil);
                 var controller:MainSurveyViewController = sb.instantiateViewControllerWithIdentifier("MainSurveyViewController") as! MainSurveyViewController
                 controller.user = user
-                controller.survey = survey
+                controller.survey = survey.copy() as! MSurvey
                 self.navigationController?.pushViewController(controller, animated: true)
             //}
         }

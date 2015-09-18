@@ -72,9 +72,14 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
         cell.seq.text = "\(indexPath.row + 1)"
         cell.ansDescription.text = "\(answer.pAa_description)"
+        cell.checked = answer.pChecked
 
         
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath.row) as! MAnswer
+        answer.pChecked = !answer.pChecked
     }
 
 }

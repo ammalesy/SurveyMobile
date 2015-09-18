@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MQuestion: Model,NSCoding {
+class MQuestion: Model,NSCoding,NSCopying {
     var pAq_id:NSString!
     var pAq_description:NSString!
     var pActive:NSString!
@@ -16,6 +16,15 @@ class MQuestion: Model,NSCoding {
     //associate
     var pAnswers:NSMutableArray!
    
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        let obj:MQuestion = MQuestion()
+        obj.pAq_id = self.pAq_id
+        obj.pAq_description = self.pAq_description
+        obj.pActive = self.pActive
+        obj.pAnswers = self.pAnswers
+        return obj
+    }
+    
     override init() {}
     required init(coder aDecoder: NSCoder) {
         self.pAq_id  = aDecoder.decodeObjectForKey("pAq_id") as? NSString

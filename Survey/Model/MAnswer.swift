@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MAnswer: Model,NSCoding {
+class MAnswer: Model,NSCoding,NSCopying {
     
     var pAa_id:NSString!
     var pAa_description:NSString!
@@ -16,6 +16,19 @@ class MAnswer: Model,NSCoding {
     var pAq_id_ref:NSString!
     var pType:NSString!
     var pActive:NSString!
+    var pChecked:Bool = false
+    
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        let obj:MAnswer = MAnswer()
+        obj.pAa_id = self.pAa_id
+        obj.pAa_description = self.pAa_description
+        obj.pAa_image = self.pAa_image
+        obj.pAq_id_ref = self.pAq_id_ref
+        obj.pType = self.pType
+        obj.pActive = self.pActive
+        obj.pChecked = self.pChecked
+        return obj
+    }
     
     override init() {}
     required init(coder aDecoder: NSCoder) {
@@ -25,6 +38,7 @@ class MAnswer: Model,NSCoding {
         self.pAq_id_ref  = aDecoder.decodeObjectForKey("pAq_id_ref") as? NSString
         self.pType  = aDecoder.decodeObjectForKey("pType") as? NSString
         self.pActive  = aDecoder.decodeObjectForKey("pActive") as? NSString
+        self.pChecked  = (aDecoder.decodeObjectForKey("pChecked") as? Bool)!
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -46,6 +60,9 @@ class MAnswer: Model,NSCoding {
         if let val = self.pActive{
             aCoder.encodeObject(val, forKey: "pActive")
         }
+        //if let val = self.pChecked{
+            aCoder.encodeObject(self.pChecked, forKey: "pChecked")
+        //}
     }
     
 }

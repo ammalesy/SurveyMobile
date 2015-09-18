@@ -11,7 +11,7 @@ import UIKit
 
 class Model: NSObject {
     struct basePath {
-        static var url:NSString = "http://192.168.1.5/Survey/api"
+        static var url:NSString = "http://192.168.43.74/Survey/api"
     }
     func handleNullString(object:AnyObject)->(NSString){
         if let str = object as? NSString {
