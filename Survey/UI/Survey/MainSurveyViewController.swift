@@ -13,20 +13,22 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
     var doneButton:UIBarButtonItem!
     var user:MUser!
     var survey:MSurvey!
+    var currentIndex:NSInteger!
     
     var pageViewController:UIPageViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentIndex = 0
         
         doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "sendSurvey:")
         self.navigationItem.rightBarButtonItem = doneButton
 //        doneButton.enabled = false
         
         var pageControl = UIPageControl.appearance()
-        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageControl.currentPageIndicatorTintColor = ColorUtil.blueSky()
-        pageControl.backgroundColor = UIColor.whiteColor()
+        pageControl.pageIndicatorTintColor = ColorUtil.blueSkyStrong()
+        pageControl.currentPageIndicatorTintColor = ColorUtil.whiteCigarette()
+        pageControl.backgroundColor = ColorUtil.blueSky()
 
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
@@ -89,7 +91,8 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
 
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
         
-//        var controller:SurveyViewController = pendingViewControllers[0] as! SurveyViewController
+        var controller:SurveyViewController = pendingViewControllers[0] as! SurveyViewController
+        currentIndex = controller.pageIndex
 //        if((controller.pageIndex + 1) == survey.pQuestions.count){
 //            doneButton.enabled = true
 //        }
@@ -104,6 +107,7 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         }
         
         index--
+        
         return self.viewController(index) as SurveyViewController
         
     }
@@ -125,15 +129,21 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         
     }
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        var pageControl = UIPageControl.appearance()
         
-        if(survey.pQuestions.count > 10) {
-            return 10
+        if(survey.pQuestions.count > 18) {
+            pageControl.numberOfPages = 18
+            return 18
         }else{
+            
             return survey.pQuestions.count
         }
+        
     }
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0
+        
+        
+        return currentIndex
     }
     
     func viewController(atIndex:NSInteger!) -> (SurveyViewController)!

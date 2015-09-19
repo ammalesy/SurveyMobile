@@ -11,6 +11,7 @@ import SCLAlertView
 
 class SyncViewController: UIViewController,ENSideMenuDelegate {
 
+    @IBOutlet weak var versionLB: UILabel!
     @IBOutlet weak var lastUpdateSendSurveyLB: UILabel!
     @IBOutlet weak var lastUpdateUpdateSurveyLB: UILabel!
     @IBAction func sendSurveyAction(sender: AnyObject) {
@@ -76,6 +77,7 @@ class SyncViewController: UIViewController,ENSideMenuDelegate {
         self.navigationItem.titleView = UIImageView(image: logo)
         self.sideMenuController()?.sideMenu?.delegate = self
         
+        self.versionLB.text = "  Version \(VERSION)"
         
         CachingControl.getCacheDynamicKey(KEY_SEND_SURVEYS, retriveCacheSuccess: { (timeString) -> Void in
             self.lastUpdateSendSurveyLB.text = timeString as? String

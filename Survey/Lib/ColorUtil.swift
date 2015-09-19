@@ -12,6 +12,12 @@ class ColorUtil: NSObject {
     class func blueSky()->(UIColor!){
         return UIColor(red: 82/255, green: 194/255, blue: 209/255, alpha: 1)
     }
+    class func whiteCigarette()->(UIColor!){
+        return UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+    }
+    class func blueSkyStrong()->(UIColor!){
+        return UIColor(red: 83/255, green: 140/255, blue: 150/255, alpha: 1)
+    }
     class func orangeStrong()->(UIColor!){
         return UIColor(red: 255/255, green: 151/255, blue: 86/255, alpha: 1)
     }

@@ -11,6 +11,7 @@ import CoreData
 import Alamofire
 import SCLAlertView
 
+var VERSION = ""
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,10 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     class func getDelegate() -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.makeKeyAndVisible()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        if let text = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String {
+            var version = text.toDouble()
+            VERSION = "\(version!)"
+        }
         
         return true
     }
@@ -116,5 +123,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension String {
+    func toDouble() -> Double? {
+        return NSNumberFormatter().numberFromString(self)?.doubleValue
+    }
 }
 
