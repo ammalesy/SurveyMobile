@@ -47,6 +47,43 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
     func sendSurvey(buttonItem:UIBarButtonItem) {
         
         var mul:NSMutableArray = survey.pQuestions;
+        var sync:MSync = MSync.convertToSyncFormat(survey, user: user)
+        
+        CachingControl.getCache(CachingIdentifier.SurVeyResultList, retriveCacheSuccess: { (listCache) -> Void in
+            
+            var list:NSMutableArray = listCache as! NSMutableArray
+            list.addObject(sync)
+            CachingControl.setCache(CachingIdentifier.SurVeyResultList, data: list)
+    
+            AlertUtil.showAlertSuccess("Succesfully", detail: "Thank you very much.", completion: { () -> Void! in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.navigationController!.popToRootViewControllerAnimated(true)
+                })
+            })
+            
+            self.survey.pCountUser = self.survey.pCountUser + 1
+            self.survey.updateCache()
+
+            for(var i = 0; i < AppDelegate.getDelegate().surveys.count; i++){
+                if ((AppDelegate.getDelegate().surveys[i] as! MSurvey).pSm_id == self.survey.pSm_id) {
+                    (AppDelegate.getDelegate().surveys[i] as! MSurvey).pCountUser = (AppDelegate.getDelegate().surveys[i] as! MSurvey).pCountUser + 1
+                }
+            }
+            
+        }) { () -> Void in
+            var list:NSMutableArray = NSMutableArray()
+            list.addObject(sync)
+            CachingControl.setCache(CachingIdentifier.SurVeyResultList, data: list)
+            
+            AlertUtil.showAlertSuccess("Succesfully", detail: "Thank you very much.", completion: { () -> Void! in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.navigationController!.popToRootViewControllerAnimated(true)
+                })
+            })
+            
+            self.survey.pCountUser = self.survey.pCountUser + 1
+            self.survey.updateCache()
+        }
         
     }
 

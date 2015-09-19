@@ -17,7 +17,11 @@ class MUser: Model,NSCoding {
     var pU_email:NSString!
     var pU_tel:NSString!
     
-    override init() {}
+    override init() {
+    
+        self.pU_age = 0
+        self.pU_sex = 0
+    }
     required init(coder aDecoder: NSCoder) {
         self.pU_id  = aDecoder.decodeObjectForKey("pU_id") as? NSString
         self.pU_firstname  = aDecoder.decodeObjectForKey("pU_firstname") as? NSString

@@ -73,6 +73,20 @@ class MSurvey: Model,NSCoding,NSCopying {
             aCoder.encodeObject(val, forKey: "pQuestions")
         }
     }
+    func updateCache(){
+        CachingControl.getCache(CachingIdentifier.Survey, retriveCacheSuccess: { (surveys) -> Void in
+            
+            for(var i = 0; i<surveys.count; i++){
+                var cacheSurvey:MSurvey = surveys[i] as! MSurvey
+                if(self.pSm_id == cacheSurvey.pSm_id){
+                    cacheSurvey.pCountUser = self.pCountUser
+                }
+            }
+            CachingControl.setCache(CachingIdentifier.Survey, data: surveys)
+        }) { () -> Void in
+            
+        }
+    }
     
     class func get_surveys(completionHandler: (NSMutableArray) -> Void, failure: (NSString!) -> Void){
         

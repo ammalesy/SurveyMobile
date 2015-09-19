@@ -16,88 +16,15 @@ import SCLAlertView
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var surveys:NSMutableArray!
 
-
+    class func getDelegate() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.makeKeyAndVisible()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
-        var f:UISearchController
-        
-//        let user =  [
-//            "u_firstname":"Ammales",
-//            "u_surname":"Yamsompong",
-//            "sm_id_ref":"10",
-//            "h_timestamp":"2015-05-09 11:20:10",
-//            "u_sex":"",
-//            "u_age":"",
-//            "u_email":"",
-//            "u_tel":"",
-//            "result":[
-//                "q_12":"97",
-//                "q_1":"102",
-//                "q_13":"110",
-//                "q_14":"129"
-//            ]
-//        ]
-//        let user2 = [
-//            "u_firstname":"Apichaya",
-//            "u_surname":"Boonsin",
-//            "sm_id_ref":"7",
-//            "h_timestamp":"2015-09-09 11:20:10",
-//            "u_sex":"",
-//            "u_age":"",
-//            "u_email":"",
-//            "u_tel":"",
-//            "result":[
-//                "q_12":"99",
-//                "q_13":"110"
-//            ]
-//        ]
-//        let user3 = [
-//            "u_firstname":"NEW_USER1",
-//            "u_surname":"NEW_USER1",
-//            "sm_id_ref":"7",
-//            "h_timestamp":"2015-09-09 11:20:10",
-//            "u_sex":"",
-//            "u_age":"",
-//            "u_email":"",
-//            "u_tel":"",
-//            "result":[
-//                "q_12":"99",
-//                "q_13":"110"
-//            ]
-//        ]
-//        let user4 = [
-//            "u_firstname":"NEW_USER2",
-//            "u_surname":"NEW_USER2",
-//            "sm_id_ref":"7",
-//            "h_timestamp":"2015-09-09 11:20:10",
-//            "u_sex":"",
-//            "u_age":"",
-//            "u_email":"",
-//            "u_tel":"",
-//            "result":[
-//                "q_12":"99",
-//                "q_13":"110"
-//            ]
-//        ]
-//        let data = [user2,user3,user4]
-//        let postParam = ["data":data]
-//        
-//        Alamofire.request(.POST,
-//            "http://127.0.0.1/Survey/api/SyncDataManager/sync",
-//            parameters: postParam,
-//            encoding:ParameterEncoding.JSON)
-//            .responseString { _, _, string, _ in
-//                
-//                SCLAlertView().showSuccess("Received", subTitle: string!);
-//                
-//            }
-//            .responseJSON { _, _, JSON, _ in
-//                println(JSON)
-//        }
         
         return true
     }

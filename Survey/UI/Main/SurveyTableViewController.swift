@@ -9,11 +9,12 @@
 import UIKit
 import SCLAlertView
 
-class SurveyTableViewController: UITableViewController,ENSideMenuDelegate {
+class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
-    var surveys:NSMutableArray!
+   
+    var listTxtOnInforPanel:NSArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +29,20 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate {
         
         self.refreshControl?.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl?.tintColor = ColorUtil.blueSky()
+        
+        
        
     }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+    }
     func syncQuestionFromServer(completionHandler:()->Void){
-        surveys = NSMutableArray()
+        AppDelegate.getDelegate().surveys = NSMutableArray()
         
         CachingControl.getCache(CachingIdentifier.Survey, retriveCacheSuccess: { (cachingArray) -> Void in
             
-            self.surveys = cachingArray as! NSMutableArray
+            AppDelegate.getDelegate().surveys = cachingArray as! NSMutableArray
             self.tableView.reloadData()
             completionHandler()
             
@@ -43,10 +50,12 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate {
                 var loadingView:SCLAlertView =  AlertUtil.showWaiting()
                 MSurvey.get_surveys({ (surveys) -> Void in
                     loadingView.hideView()
-                    self.surveys = surveys
+                    AppDelegate.getDelegate().surveys = surveys
                     CachingControl.setCache(CachingIdentifier.Survey, data: surveys)
                     self.tableView.reloadData()
                     self.removeErrorLabelAtTable()
+                    
+                    CachingControl.setCacheDynamicKey(KEY_UPDATE_SURVEYS, data: DateUtil.dateFormater().stringFromDate(NSDate()))
                     completionHandler()
                     
                 }, failure: { (errorString) -> Void in
@@ -103,7 +112,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return surveys.count;
+        return AppDelegate.getDelegate().surveys.count;
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -120,7 +129,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var view:UILabel = UILabel()
         view.backgroundColor = UIColor.whiteColor()//UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
-        view.text = "  All survey (\(surveys.count))"
+        view.text = "  All survey (\(AppDelegate.getDelegate().surveys.count))"
         view.textColor = UIColor(red: 94/255.0, green: 190/255.0, blue: 202/255.0, alpha: 1)
         view.font = UIFont.boldSystemFontOfSize(14)
         return view
@@ -136,30 +145,91 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate {
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var survey:MSurvey = surveys.objectAtIndex(indexPath.row) as! MSurvey
-        AlertUtil.showInformation { (nameTxt, surnameTxt, ageTxt, emailTxt, sexSeg) -> Void in
-      
-//            if( nameTxt.text != "" &&
-//                surnameTxt.text != "" &&
-//                ageTxt.text != "" &&
-//                emailTxt.text != "" )
-//            {
+        var survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
+        
+        var returnObj = AlertUtil.showInformation { (nameTxt, surnameTxt, ageTxt,telTxt, emailTxt, sexSeg) -> Void in
+            
+            if( nameTxt.text != "" && surnameTxt.text != "" )
+            {
+                if(ageTxt.text == nil || ageTxt.text == "") {ageTxt.text = "0"}
                 var user:MUser = MUser()
-                user.pU_firstname = "\(nameTxt.text) \(surnameTxt.text)"
+                user.pU_firstname = nameTxt.text
+                user.pU_surname = surnameTxt.text
                 user.pU_age = ageTxt.text.toInt()
+                user.pU_sex = sexSeg.selectedSegmentIndex
                 user.pU_email = emailTxt.text
+                user.pU_tel = telTxt.text
                 var sb = UIStoryboard(name: "Main",bundle: nil);
                 var controller:MainSurveyViewController = sb.instantiateViewControllerWithIdentifier("MainSurveyViewController") as! MainSurveyViewController
                 controller.user = user
                 controller.survey = survey.copy() as! MSurvey
                 self.navigationController?.pushViewController(controller, animated: true)
-            //}
+            }
         }
+        var listTxt =  returnObj.textFields
+        listTxt[0].delegate = self
+        listTxt[1].delegate = self
+        listTxt[2].delegate = self
+        listTxt[3].delegate = self
+        listTxt[4].delegate = self
+        
+        listTxt[0].addTarget(self, action: "textChange:", forControlEvents: UIControlEvents.EditingChanged)
+        listTxt[1].addTarget(self, action: "textChange:", forControlEvents: UIControlEvents.EditingChanged)
+        listTxt[2].addTarget(self, action: "textChange:", forControlEvents: UIControlEvents.EditingChanged)
+        listTxt[3].addTarget(self, action: "textChange:", forControlEvents: UIControlEvents.EditingChanged)
+        listTxt[4].addTarget(self, action: "textChange:", forControlEvents: UIControlEvents.EditingChanged)
+        
+        self.listTxtOnInforPanel = listTxt
     }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        if(textField.tag != 999) {
+            textField.inputAccessoryView = nil
+            
+            var containerView:UIView = UIView(frame: CGRectMake(0, 0, 0, 30))
+            containerView.backgroundColor = ColorUtil.blueSky()
+            
+            var tempTxtField:KBUITextField = KBUITextField(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.width - 20, 30))
+            tempTxtField.backgroundColor = ColorUtil.blueSky()
+            tempTxtField.borderStyle = UITextBorderStyle.None
+            tempTxtField.placeholder = textField.placeholder
+            tempTxtField.textColor = UIColor.whiteColor()
+            tempTxtField.tag = 999
+            tempTxtField.delegate = self
+            tempTxtField.ref = textField.tag
+            tempTxtField.addTarget(self, action: "textChange:", forControlEvents: UIControlEvents.EditingChanged)
+            
+            containerView.addSubview(tempTxtField)
+            textField.inputAccessoryView = containerView
+            
+            tempTxtField.text = textField.text
+        }
+        
+    }
+    func textChange(textfield:UITextField!) {
+
+        if(textfield.tag != 999){
+            
+            var accTxt = textfield.inputAccessoryView!.viewWithTag(999) as! UITextField
+            accTxt.text = textfield.text
+        
+        }else{
+
+            (listTxtOnInforPanel[(textfield as! KBUITextField).ref] as! UITextField).text = textfield.text
+            
+        }
+        
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SurveyTableViewCell
-        var survey:MSurvey = surveys.objectAtIndex(indexPath.row) as! MSurvey
+        var survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
         cell.pTitle.text = survey.pSm_name as String
         cell.pDescription.text = survey.pSm_description as String
         cell.pAmount.text = String(survey.pCountUser)

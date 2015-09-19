@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		182CAF451BAB2F2B0034FF29 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CAF441BAB2F2B0034FF29 /* AnswerTableViewCell.swift */; };
+		182CAF471BAD5A3E0034FF29 /* KBUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CAF461BAD5A3E0034FF29 /* KBUITextField.swift */; };
+		182CAF491BAD79BD0034FF29 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CAF481BAD79BD0034FF29 /* DateUtil.swift */; };
 		18A1B9081BA9C82000F259DE /* MainSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */; };
 		1CA4316D941FECADB35CE95C /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D862BE129D867B84F554F6 /* Pods_Survey.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5222FC521BA44F5800DB5C33 /* MSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222FC511BA44F5800DB5C33 /* MSurvey.swift */; };
@@ -35,7 +37,6 @@
 		52CDD93F1B998F1B00E462A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52CDD93E1B998F1B00E462A3 /* Images.xcassets */; };
 		52CDD9421B998F1B00E462A3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CDD9401B998F1B00E462A3 /* LaunchScreen.xib */; };
 		52CDD94E1B998F1B00E462A3 /* SurveyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDD94D1B998F1B00E462A3 /* SurveyTests.swift */; };
-		52F5CFE41BAAE03D008EE59F /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F5CFE31BAAE03D008EE59F /* SubmitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		182CAF441BAB2F2B0034FF29 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
+		182CAF461BAD5A3E0034FF29 /* KBUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBUITextField.swift; sourceTree = "<group>"; };
+		182CAF481BAD79BD0034FF29 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSurveyViewController.swift; sourceTree = "<group>"; };
 		3855A226C3F4238B3C36601D /* Pods-Survey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Survey/Pods-Survey.debug.xcconfig"; sourceTree = "<group>"; };
 		5222FC511BA44F5800DB5C33 /* MSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSurvey.swift; sourceTree = "<group>"; };
@@ -84,7 +87,6 @@
 		52CDD9471B998F1B00E462A3 /* SurveyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurveyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CDD94C1B998F1B00E462A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52CDD94D1B998F1B00E462A3 /* SurveyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTests.swift; sourceTree = "<group>"; };
-		52F5CFE31BAAE03D008EE59F /* SubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 		76D862BE129D867B84F554F6 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA54E8BEBEDD02D2D37A93A1 /* Pods-Survey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Survey/Pods-Survey.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,7 +140,6 @@
 			children = (
 				522DE30E1BA7FD9500349045 /* SurveyViewController.swift */,
 				18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */,
-				52F5CFE31BAAE03D008EE59F /* SubmitViewController.swift */,
 				182CAF441BAB2F2B0034FF29 /* AnswerTableViewCell.swift */,
 			);
 			path = Survey;
@@ -189,6 +190,8 @@
 				529959E81BA7ADF40058EACC /* Reachability.swift */,
 				529959EA1BA7B6040058EACC /* AlertUtil.swift */,
 				529959EC1BA7BA200058EACC /* ColorUtil.swift */,
+				182CAF461BAD5A3E0034FF29 /* KBUITextField.swift */,
+				182CAF481BAD79BD0034FF29 /* DateUtil.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -419,15 +422,16 @@
 			files = (
 				524D55AD1BAC2D7F0095F896 /* MSync.swift in Sources */,
 				5222FC521BA44F5800DB5C33 /* MSurvey.swift in Sources */,
+				182CAF471BAD5A3E0034FF29 /* KBUITextField.swift in Sources */,
 				529959E41BA71F890058EACC /* MQuestion.swift in Sources */,
 				52B8681F1BA1EDB300A6B1BB /* ENSideMenu.swift in Sources */,
 				529959DE1BA711EB0058EACC /* SurveyTableViewController.swift in Sources */,
+				182CAF491BAD79BD0034FF29 /* DateUtil.swift in Sources */,
 				5222FC541BA4503E00DB5C33 /* CachingControl.swift in Sources */,
 				529959DF1BA711EB0058EACC /* MenuTableViewCell.swift in Sources */,
 				529959E61BA720350058EACC /* MAnswer.swift in Sources */,
 				182CAF451BAB2F2B0034FF29 /* AnswerTableViewCell.swift in Sources */,
 				529959EB1BA7B6040058EACC /* AlertUtil.swift in Sources */,
-				52F5CFE41BAAE03D008EE59F /* SubmitViewController.swift in Sources */,
 				52CDD9351B998F1A00E462A3 /* AppDelegate.swift in Sources */,
 				529959ED1BA7BA200058EACC /* ColorUtil.swift in Sources */,
 				529959E21BA711EB0058EACC /* SideMenuNavigationController.swift in Sources */,
@@ -581,6 +585,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "47eb8163-be28-40cc-90b9-e57b47aa9f17";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Debug;
 		};
@@ -600,6 +605,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "47eb8163-be28-40cc-90b9-e57b47aa9f17";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};

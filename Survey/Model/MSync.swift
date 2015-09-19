@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SCLAlertView
 
 class MSync: Model,NSCoding {
     
@@ -34,55 +36,53 @@ class MSync: Model,NSCoding {
     }
     class func convertToSyncFormat(survey:MSurvey! , user:MUser!)->MSync {
         
-        //        let user =  [
-        //            "u_firstname":"Ammales",
-        //            "u_surname":"Yamsompong",
-        //            "sm_id_ref":"10",
-        //            "h_timestamp":"2015-05-09 11:20:10",
-        //            "u_sex":"",
-        //            "u_age":"",
-        //            "u_email":"",
-        //            "u_tel":"",
-        //            "result":[
-        //                "q_12":"97",
-        //                "q_1":"102",
-        //                "q_13":"110",
-        //                "q_14":"129"
-        //            ]
-        //        ]
         let sync:MSync = MSync()
         sync.pU_firstname = user.pU_firstname
         sync.pU_surname = user.pU_surname
         sync.pSm_id_ref = survey.pSm_id
-        
-        let formatDate:NSDateFormatter = NSDateFormatter()
-        formatDate.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        sync.pH_timestamp = formatDate.stringFromDate(NSDate())
+        sync.pH_timestamp = DateUtil.dateFormater().stringFromDate(NSDate())
         sync.pU_sex = String(user.pU_sex)
         sync.pU_age = String(user.pU_age)
         sync.pU_email = user.pU_email
         sync.pU_tel = user.pU_tel
         
+        var resultConvert:NSMutableDictionary = NSMutableDictionary()
         for(var i = 0; i < survey.pQuestions.count; i++){
-            var resultConvert:NSMutableArray = NSMutableArray()
+            
             var theKey = "q_\((survey.pQuestions[i] as! MQuestion).pAq_id)"
             
-            
             var listAnswer:NSMutableArray = (survey.pQuestions[i] as! MQuestion).pAnswers
-            var ansConvert:NSMutableDictionary = NSMutableDictionary()
-//            for(var j = 0; j < listAnswer.count; j++) {
-//                var ans:MAnswer = listAnswer[i] as! MAnswer
-//                if (ans.pChecked == true) {
-//                    ansConvert.setObject(ans.pAa_id, forKey: "\(ans.pAa_id)")
-//                }
-//            }
+            var ansConvert:NSString = ""
+            
+            for ans:MAnswer in listAnswer as Array as! [MAnswer] {
+                if (ans.pChecked == true) {
+                    ansConvert = ansConvert.stringByAppendingString(",\(ans.pAa_id)")
+                }
+            }
+            if(ansConvert != "") {
+                ansConvert = ansConvert.substringFromIndex(1)
+            }
+            resultConvert.setValue(ansConvert, forKey: theKey)
         }
+        sync.pResult = resultConvert
         
+        return sync
         
     }
     func toJson() -> AnyObject!{
-        let data = NSKeyedArchiver.archivedDataWithRootObject(self)
-        return NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+        
+        var json:NSMutableDictionary = NSMutableDictionary()
+        json.setObject(self.pU_firstname, forKey: "u_firstname")
+        json.setObject(self.pU_surname, forKey: "u_surname")
+        json.setObject(self.pSm_id_ref, forKey: "sm_id_ref")
+        json.setObject(self.pH_timestamp, forKey: "h_timestamp")
+        json.setObject(self.pU_sex, forKey: "u_sex")
+        json.setObject(self.pU_age, forKey: "u_age")
+        json.setObject(self.pU_email, forKey: "u_email")
+        json.setObject(self.pU_tel, forKey: "u_tel")
+        json.setObject(self.pResult, forKey: "result")
+        return json
+        
     }
     func encodeWithCoder(aCoder: NSCoder) {
         if let val = self.pU_firstname{
@@ -111,6 +111,36 @@ class MSync: Model,NSCoding {
         }
         if let val = self.pResult{
             aCoder.encodeObject(val, forKey: "pResult")
+        }
+    }
+    class func syncToServer(success: (message:NSString!) -> Void, failur: (message:NSString!) -> Void){
+        
+        CachingControl.getCache(CachingIdentifier.SurVeyResultList, retriveCacheSuccess: { (listCache) -> Void in
+            
+            var param:NSMutableArray = NSMutableArray()
+            for sync:MSync in listCache as! Array as [MSync] {
+                param.addObject(sync.toJson())
+            }
+            let postParam = ["data":param]
+            Alamofire.request(.POST,
+                "\(Model.basePath.url)/SyncDataManager/sync",
+                parameters: postParam,
+                encoding:ParameterEncoding.JSON)
+                .responseString { _, _, string, _ in
+                    
+                    
+                }.responseJSON { _, response, JSON, _ in
+                    
+                    if(response!.statusCode == 200){
+                        success(message: "Sync data complete")
+                    }else{
+                        failur(message: "Sync data fail!")
+                    }
+                    
+            }
+            
+        }) { () -> Void in
+            failur(message: "Surveys not found on this device.")
         }
     }
    

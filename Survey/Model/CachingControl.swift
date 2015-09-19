@@ -9,11 +9,15 @@
 import UIKit
 
 let KEY_SURVEYS_CACHE = "Surveys"
+let KEY_SURVEYS_RESULT_LIST_CACHE = "SurVeyResultList"
+let KEY_SEND_SURVEYS = "sendSurveyTimestamp"
+let KEY_UPDATE_SURVEYS = "updateSurveyTimestamp"
 
 enum CachingIdentifier : Int {
     
     case None
     case Survey
+    case SurVeyResultList
 
 }
 
@@ -28,16 +32,33 @@ class CachingControl: NSObject {
             }else{
                 neverStore()
             }
+        }else if(identifier == CachingIdentifier.SurVeyResultList){
+            if let resultListCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(KEY_SURVEYS_RESULT_LIST_CACHE) {
+                var list = NSKeyedUnarchiver.unarchiveObjectWithData(resultListCache as! NSData) as? NSMutableArray
+                
+                retriveCacheSuccess(list)
+            }else{
+                neverStore()
+            }
         }else{
             neverStore()
         }
     }
     class func setCache(identifier:CachingIdentifier, data:AnyObject!)->(Bool) {
-        if(identifier == CachingIdentifier.Survey){
+        if(identifier == CachingIdentifier.Survey)
+        {
             let archiver = NSKeyedArchiver.archivedDataWithRootObject(data)
             NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: KEY_SURVEYS_CACHE)
             return NSUserDefaults.standardUserDefaults().synchronize()
-        }else{
+        }
+        else if(identifier == CachingIdentifier.SurVeyResultList)
+        {
+            let archiver = NSKeyedArchiver.archivedDataWithRootObject(data)
+            NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: KEY_SURVEYS_RESULT_LIST_CACHE)
+            return NSUserDefaults.standardUserDefaults().synchronize()
+        }
+        else
+        {
             return false
         }
     }
@@ -46,6 +67,10 @@ class CachingControl: NSObject {
            
             NSUserDefaults.standardUserDefaults().removeObjectForKey(KEY_SURVEYS_CACHE)
 
+        }else if(identifier == CachingIdentifier.SurVeyResultList){
+            
+            NSUserDefaults.standardUserDefaults().removeObjectForKey(KEY_SURVEYS_RESULT_LIST_CACHE)
+            
         }
     }
     
@@ -66,5 +91,14 @@ class CachingControl: NSObject {
         let archiver = NSKeyedArchiver.archivedDataWithRootObject(data)
         NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: key as String)
         return NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    class func getCacheDynamicKey(key:NSString, retriveCacheSuccess: (AnyObject!) -> Void , neverStore: () -> Void) {
+        
+        if let cache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(key as String) {
+            retriveCacheSuccess(NSKeyedUnarchiver.unarchiveObjectWithData(cache as! NSData))
+        }else{
+            neverStore()
+        }
+        
     }
 }
