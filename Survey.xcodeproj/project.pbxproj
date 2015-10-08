@@ -11,6 +11,7 @@
 		182CAF471BAD5A3E0034FF29 /* KBUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CAF461BAD5A3E0034FF29 /* KBUITextField.swift */; };
 		182CAF491BAD79BD0034FF29 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CAF481BAD79BD0034FF29 /* DateUtil.swift */; };
 		18A1B9081BA9C82000F259DE /* MainSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */; };
+		18EF0F381BC6C089002698EF /* SurveyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF0F371BC6C089002698EF /* SurveyCollectionViewController.swift */; };
 		1CA4316D941FECADB35CE95C /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D862BE129D867B84F554F6 /* Pods_Survey.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5222FC521BA44F5800DB5C33 /* MSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222FC511BA44F5800DB5C33 /* MSurvey.swift */; };
 		5222FC541BA4503E00DB5C33 /* CachingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222FC531BA4503E00DB5C33 /* CachingControl.swift */; };
@@ -54,6 +55,7 @@
 		182CAF461BAD5A3E0034FF29 /* KBUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBUITextField.swift; sourceTree = "<group>"; };
 		182CAF481BAD79BD0034FF29 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSurveyViewController.swift; sourceTree = "<group>"; };
+		18EF0F371BC6C089002698EF /* SurveyCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCollectionViewController.swift; sourceTree = "<group>"; };
 		3855A226C3F4238B3C36601D /* Pods-Survey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Survey/Pods-Survey.debug.xcconfig"; sourceTree = "<group>"; };
 		5222FC511BA44F5800DB5C33 /* MSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSurvey.swift; sourceTree = "<group>"; };
 		5222FC531BA4503E00DB5C33 /* CachingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingControl.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				529959D61BA711EB0058EACC /* SurveyTableViewCell.swift */,
 				529959D71BA711EB0058EACC /* SurveyTableViewController.swift */,
+				18EF0F371BC6C089002698EF /* SurveyCollectionViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				529959DD1BA711EB0058EACC /* SurveyTableViewCell.swift in Sources */,
 				522DE30F1BA7FD9500349045 /* SurveyViewController.swift in Sources */,
 				52B868201BA1EDB300A6B1BB /* ENSideMenuNavigationController.swift in Sources */,
+				18EF0F381BC6C089002698EF /* SurveyCollectionViewController.swift in Sources */,
 				52CDD9381B998F1A00E462A3 /* Survey.xcdatamodeld in Sources */,
 				529959E91BA7ADF40058EACC /* Reachability.swift in Sources */,
 				18A1B9081BA9C82000F259DE /* MainSurveyViewController.swift in Sources */,
@@ -586,6 +590,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -606,6 +611,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
