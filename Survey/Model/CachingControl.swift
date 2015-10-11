@@ -12,14 +12,18 @@ let KEY_SURVEYS_CACHE = "Surveys"
 let KEY_SURVEYS_RESULT_LIST_CACHE = "SurVeyResultList"
 let KEY_SEND_SURVEYS = "sendSurveyTimestamp"
 let KEY_UPDATE_SURVEYS = "updateSurveyTimestamp"
+let KEY_IMAGES_SURVEYS = "imagesSurveys"
 
 enum CachingIdentifier : Int {
     
     case None
     case Survey
     case SurVeyResultList
+    case SurveyImage
 
 }
+
+var cachingImageOnMemory:NSMutableDictionary = NSMutableDictionary()
 
 class CachingControl: NSObject {
     
@@ -34,6 +38,14 @@ class CachingControl: NSObject {
             }
         }else if(identifier == CachingIdentifier.SurVeyResultList){
             if let resultListCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(KEY_SURVEYS_RESULT_LIST_CACHE) {
+                var list = NSKeyedUnarchiver.unarchiveObjectWithData(resultListCache as! NSData) as? NSMutableArray
+                
+                retriveCacheSuccess(list)
+            }else{
+                neverStore()
+            }
+        }else if(identifier == CachingIdentifier.SurveyImage){
+            if let resultListCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(KEY_IMAGES_SURVEYS) {
                 var list = NSKeyedUnarchiver.unarchiveObjectWithData(resultListCache as! NSData) as? NSMutableArray
                 
                 retriveCacheSuccess(list)
@@ -57,6 +69,12 @@ class CachingControl: NSObject {
             NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: KEY_SURVEYS_RESULT_LIST_CACHE)
             return NSUserDefaults.standardUserDefaults().synchronize()
         }
+        else if(identifier == CachingIdentifier.SurveyImage)
+        {
+            let archiver = NSKeyedArchiver.archivedDataWithRootObject(data)
+            NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: KEY_IMAGES_SURVEYS)
+            return NSUserDefaults.standardUserDefaults().synchronize()
+        }
         else
         {
             return false
@@ -70,6 +88,10 @@ class CachingControl: NSObject {
         }else if(identifier == CachingIdentifier.SurVeyResultList){
             
             NSUserDefaults.standardUserDefaults().removeObjectForKey(KEY_SURVEYS_RESULT_LIST_CACHE)
+            
+        }else if(identifier == CachingIdentifier.SurveyImage){
+            
+            NSUserDefaults.standardUserDefaults().removeObjectForKey(KEY_IMAGES_SURVEYS)
             
         }
     }

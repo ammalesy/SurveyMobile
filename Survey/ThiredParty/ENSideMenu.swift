@@ -236,7 +236,7 @@ public class ENSideMenu : NSObject, UIGestureRecognizerDelegate {
         // Configure side menu container
         updateFrame()
 
-        sideMenuContainerView.backgroundColor = UIColor(red: 82/255, green: 194/255, blue: 209/255, alpha: 1)
+        sideMenuContainerView.backgroundColor = ColorUtil.darkGray()
         sideMenuContainerView.clipsToBounds = false
         sideMenuContainerView.layer.masksToBounds = false
         sideMenuContainerView.layer.shadowOffset = (menuPosition == .Left) ? CGSizeMake(1.0, 1.0) : CGSizeMake(-1.0, -1.0)

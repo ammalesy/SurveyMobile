@@ -10,8 +10,14 @@ import UIKit
 
 
 class Model: NSObject {
+    struct serverPath {
+        static var url:NSString = "http://192.168.1.8/Survey"
+    }
     struct basePath {
-        static var url:NSString = "http://192.168.1.6/Survey/api"
+        static var url:NSString = "\(Model.serverPath.url)/api"
+    }
+    struct imagePath {
+        static var url:NSString = "\(Model.serverPath.url)/images_upload_surveys"
     }
     func handleNullString(object:AnyObject)->(NSString){
         if let str = object as? NSString {

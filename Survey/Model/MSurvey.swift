@@ -16,7 +16,12 @@ class MSurvey: Model,NSCoding,NSCopying {
     var pSm_table_code:NSString!
     var pSm_order_column:NSString!
     var pSm_update_at:NSString!
+    var pSm_image_id:NSString!
     var pCountUser:NSInteger!
+    
+    
+    //Temporaty
+    var pSm_imageData:UIImage!
     
     //associate
     var pQuestions:NSMutableArray!
@@ -32,6 +37,7 @@ class MSurvey: Model,NSCoding,NSCopying {
         obj.pSm_order_column = self.pSm_order_column
         obj.pSm_update_at = self.pSm_update_at
         obj.pCountUser = self.pCountUser
+        obj.pSm_image_id = self.pSm_image_id
         obj.pQuestions = self.pQuestions
         return obj
     }
@@ -43,6 +49,7 @@ class MSurvey: Model,NSCoding,NSCopying {
         self.pSm_table_code  = aDecoder.decodeObjectForKey("pSm_table_code") as? NSString
         self.pSm_order_column  = aDecoder.decodeObjectForKey("pSm_order_column") as? NSString
         self.pSm_update_at  = aDecoder.decodeObjectForKey("pSm_update_at") as? NSString
+        self.pSm_image_id  = aDecoder.decodeObjectForKey("pSm_image_id") as? NSString
         self.pCountUser  = aDecoder.decodeObjectForKey("pCountUser") as? NSInteger
         self.pQuestions  = aDecoder.decodeObjectForKey("pQuestions") as? NSMutableArray
     }
@@ -65,6 +72,9 @@ class MSurvey: Model,NSCoding,NSCopying {
         }
         if let val = self.pSm_update_at{
             aCoder.encodeObject(val, forKey: "pSm_update_at")
+        }
+        if let val = self.pSm_image_id{
+            aCoder.encodeObject(val, forKey: "pSm_image_id")
         }
         if let val = self.pCountUser{
             aCoder.encodeObject(val, forKey: "pCountUser")
@@ -97,7 +107,7 @@ class MSurvey: Model,NSCoding,NSCopying {
         }else{
             
             Alamofire.request(.GET,
-                "\(Model.basePath.url)/SurveyManagement/surveys",
+                "\(Model.basePath.url)/SurveyManagement/surveys?project_name=SurveyNew",
                 parameters: nil,
                 encoding:ParameterEncoding.JSON)
                 .responseString { _, _, string, _ in
@@ -117,6 +127,8 @@ class MSurvey: Model,NSCoding,NSCopying {
                             survey.pSm_table_code = survey.handleNullString(json[indexMain].objectForKey("sm_table_code")!)
                             survey.pSm_order_column = survey.handleNullString(json[indexMain].objectForKey("sm_order_column")!)
                             survey.pSm_update_at = survey.handleNullString(json[indexMain].objectForKey("sm_update_at")!)
+                            survey.pSm_image_id = survey.handleNullString(json[indexMain].objectForKey("sm_image")!)
+                            
                             survey.pCountUser = 0
                             
                             /*======================*/
@@ -133,6 +145,7 @@ class MSurvey: Model,NSCoding,NSCopying {
                                 /*======================*/
                                 /*======answers=========*/
                                 /*======================*/
+                     
                                 var answers:NSMutableArray = survey.handleNullArray(questions[indexQuestion].objectForKey("answers")!)
                                 var listAnswer:NSMutableArray = NSMutableArray()
                                 for(var indexAns = 0; indexAns < answers.count; indexAns++){
@@ -142,8 +155,14 @@ class MSurvey: Model,NSCoding,NSCopying {
                                     m_answer.pAa_image = survey.handleNullString(answers[indexAns].objectForKey("aa_image")!)
                                     m_answer.pAq_id_ref = survey.handleNullString(answers[indexAns].objectForKey("aq_id_ref")!)
                                     m_answer.pType = survey.handleNullString(answers[indexAns].objectForKey("type")!)
+                                    m_answer.pAa_color = survey.handleNullString(answers[indexAns].objectForKey("aa_color")!)
                                     m_answer.pActive = survey.handleNullString(answers[indexAns].objectForKey("active")!)
-                                    m_answer.pChecked = false
+                                    
+                                    if(m_answer.pType.isEqualToString("1")){
+                                        m_answer.pChecked = true
+                                    }else{
+                                        m_answer.pChecked = false
+                                    }
                                     
                                     listAnswer.addObject(m_answer)
                                 }

@@ -18,6 +18,7 @@ class AnswerTableViewCell: UITableViewCell {
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var ct_left_backgroundView: NSLayoutConstraint!
     @IBOutlet weak var ct_right_backgroundView: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -25,6 +26,10 @@ class AnswerTableViewCell: UITableViewCell {
             ct_left_backgroundView.constant = 100
             ct_right_backgroundView.constant = 100
         }
+        
+        self.contentView.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clearColor()
+        self.backgroundView?.backgroundColor = UIColor.clearColor()
         
         
         

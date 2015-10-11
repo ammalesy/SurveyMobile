@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             VERSION = "\(version!)"
         }
         
+        AppDelegate.getDelegate().surveys = NSMutableArray()
+        
         return true
     }
 

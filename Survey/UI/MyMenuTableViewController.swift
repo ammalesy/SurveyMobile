@@ -87,7 +87,7 @@ class MyMenuTableViewController: UITableViewController {
         var destViewController : UIViewController
         switch (indexPath.row) {
         case 0:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SurveyTableViewController") as! UIViewController
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SurveyCollectionViewController") as! UIViewController
            
             break
         default :

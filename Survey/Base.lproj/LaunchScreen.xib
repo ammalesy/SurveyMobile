@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_survey_main_logo" translatesAutoresizingMaskIntoConstraints="NO" id="FHm-OZ-nOG">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_splash" translatesAutoresizingMaskIntoConstraints="NO" id="FHm-OZ-nOG">
                     <rect key="frame" x="140" y="206" width="200" height="68"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="0B7-tX-DN2"/>
@@ -29,7 +29,7 @@
                     </variation>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.32156862749999998" green="0.76078431369999999" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.92156862750000001" green="0.43529411759999997" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="FHm-OZ-nOG" secondAttribute="centerY" id="1Bt-FR-gLC"/>
                 <constraint firstItem="FHm-OZ-nOG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="206" id="Ldt-EF-QA9"/>
@@ -53,6 +53,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo_survey_main_logo" width="266" height="91"/>
+        <image name="logo_splash" width="266" height="91"/>
     </resources>
 </document>

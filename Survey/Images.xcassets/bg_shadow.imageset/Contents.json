@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "logo_survey_main_logo.png"
+      "filename" : "bg_shadow.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "logo_survey_main_logo-1.png"
+      "filename" : "bg_shadow-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "logo_survey_main_logo-2.png"
+      "filename" : "bg_shadow-2.png"
     }
   ],
   "info" : {

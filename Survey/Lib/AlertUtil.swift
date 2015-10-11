@@ -12,7 +12,7 @@ import SCLAlertView
 class AlertUtil: NSObject {
     class func showAlertError(title:NSString!,detail:NSString!) -> (SCLAlertView!) {
         var alert:SCLAlertView = SCLAlertView()
-        alert.showError(String(title), subTitle: String(detail),colorStyle: 0x52c2d1, colorTextButton: 0xFFFFFF)
+        alert.showError(String(title), subTitle: String(detail),colorStyle: 0xeb6f3b, colorTextButton: 0xFFFFFF)
         return alert
     }
     class func showAlertSuccess(title:NSString!,detail:NSString!,completion:()->Void!) -> (SCLAlertView!) {
@@ -21,7 +21,7 @@ class AlertUtil: NSObject {
         alert.addButton("Done", action: { () -> Void in
             completion()
         })
-        alert.showSuccess(String(title), subTitle: String(detail),colorStyle: 0x52c2d1, colorTextButton: 0xFFFFFF)
+        alert.showSuccess(String(title), subTitle: String(detail),colorStyle: 0xeb6f3b, colorTextButton: 0xFFFFFF)
         return alert
     }
     class func showWaiting(duration:NSTimeInterval?=0.0) -> (SCLAlertView!) {
@@ -29,9 +29,9 @@ class AlertUtil: NSObject {
         loadingView.showCloseButton = false
         
         if(duration > 0.0){
-            loadingView.showWait("SyncData", subTitle: "wainting for question data..", duration:duration! ,colorStyle: 0x52c2d1)
+            loadingView.showWait("SyncData", subTitle: "wainting for question data..", duration:duration! ,colorStyle: 0xeb6f3b)
         }else{
-            loadingView.showWait("SyncData", subTitle: "wainting for question data..", colorStyle: 0x52c2d1)
+            loadingView.showWait("SyncData", subTitle: "wainting for question data..", colorStyle: 0xeb6f3b)
         }
         return loadingView
     }
@@ -67,7 +67,7 @@ class AlertUtil: NSObject {
             pressedConfirm(nameTxt: name, surnameTxt: surname, ageTxt: age, telTxt:tel, emailTxt: email, sexSeg: segmentSex)
         }
         
-        alert.showEdit("Information.", subTitle: "Fill your information", closeButtonTitle: "Cancel", colorStyle:0x52c2d1, colorTextButton:0xFFFFFF)
+        alert.showEdit("Information.", subTitle: "Fill your information", closeButtonTitle: "Cancel", colorStyle:0xeb6f3b, colorTextButton:0xFFFFFF)
             return (alert as SCLAlertView!,[name,surname,age,tel,email,sexTxt])
     }
 }

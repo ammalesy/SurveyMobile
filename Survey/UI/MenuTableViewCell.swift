@@ -22,7 +22,7 @@ class MenuTableViewCell: UITableViewCell {
 
         if(selected){
             self.backgroundColor = UIColor.clearColor()
-            self.textLabel!.textColor = UIColor(red: 82/255, green: 194/255, blue: 209/255, alpha: 1)
+            self.textLabel!.textColor = ColorUtil.darkGray()
             if(indexPath.row == 1){
                 self.imageView?.image = UIImage(named: "Settings-50_selected")
             }else{

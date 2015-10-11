@@ -26,9 +26,9 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
 //        doneButton.enabled = false
         
         var pageControl = UIPageControl.appearance()
-        pageControl.pageIndicatorTintColor = ColorUtil.blueSkyStrong()
-        pageControl.currentPageIndicatorTintColor = ColorUtil.whiteCigarette()
-        pageControl.backgroundColor = ColorUtil.blueSky()
+        pageControl.pageIndicatorTintColor = ColorUtil.orangeLight()
+        pageControl.currentPageIndicatorTintColor = ColorUtil.darkGray()
+        pageControl.backgroundColor = UIColor.whiteColor()
 
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
@@ -36,7 +36,7 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         
         let startingViewController = self.viewController(0) as SurveyViewController
         self.pageViewController.setViewControllers([startingViewController.0], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
-        self.pageViewController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)
+        self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
@@ -75,6 +75,7 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         }) { () -> Void in
             var list:NSMutableArray = NSMutableArray()
             list.addObject(sync)
+            println(list[0].description)
             CachingControl.setCache(CachingIdentifier.SurVeyResultList, data: list)
             
             AlertUtil.showAlertSuccess("Succesfully", detail: "Thank you very much.", completion: { () -> Void! in

@@ -54,15 +54,29 @@ class MSync: Model,NSCoding {
             var listAnswer:NSMutableArray = (survey.pQuestions[i] as! MQuestion).pAnswers
             var ansConvert:NSString = ""
             
+            var listAns:NSMutableArray = NSMutableArray()
             for ans:MAnswer in listAnswer as Array as! [MAnswer] {
                 if (ans.pChecked == true) {
-                    ansConvert = ansConvert.stringByAppendingString(",\(ans.pAa_id)")
+                    
+                    if(ans.pType.isEqualToString("0")){
+                        listAns.addObject(["aa_id":ans.pAa_id])
+                    }else if(ans.pType.isEqualToString("1")){
+                        listAns.addObject(["aa_id":ans.pAa_id,
+                                            "text":ans.pTextFromTxtBox])
+                    }else{
+                        listAns.addObject(["aa_id":ans.pAa_id])
+                    }
+                    
+                    //ansConvert = ansConvert.stringByAppendingString(",\(ans.pAa_id)")
                 }
             }
-            if(ansConvert != "") {
-                ansConvert = ansConvert.substringFromIndex(1)
-            }
-            resultConvert.setValue(ansConvert, forKey: theKey)
+//            if(ansConvert != "") {
+//                ansConvert = ansConvert.substringFromIndex(1)
+//            }
+            let data = NSJSONSerialization.dataWithJSONObject(listAns, options: nil, error: nil)
+            let jsonString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            println(jsonString!)
+            resultConvert.setValue(jsonString, forKey: theKey)
         }
         sync.pResult = resultConvert
         
@@ -121,13 +135,14 @@ class MSync: Model,NSCoding {
             for sync:MSync in listCache as! Array as [MSync] {
                 param.addObject(sync.toJson())
             }
-            let postParam = ["data":param]
+            let postParam = ["data":param,"project_name":"SurveyNew"]
             Alamofire.request(.POST,
                 "\(Model.basePath.url)/SyncDataManager/sync",
                 parameters: postParam,
                 encoding:ParameterEncoding.JSON)
                 .responseString { _, _, string, _ in
                     
+                    println(string)
                     
                 }.responseJSON { _, response, JSON, _ in
                     
