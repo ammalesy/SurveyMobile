@@ -135,7 +135,7 @@ class MSync: Model,NSCoding {
             for sync:MSync in listCache as! Array as [MSync] {
                 param.addObject(sync.toJson())
             }
-            let postParam = ["data":param,"project_name":"SurveyNew"]
+            let postParam = ["data":param,"project_name":Session.sharedInstance.project_selected]
             Alamofire.request(.POST,
                 "\(Model.basePath.url)/SyncDataManager/sync",
                 parameters: postParam,

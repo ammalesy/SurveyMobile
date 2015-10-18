@@ -82,6 +82,13 @@ public extension UIViewController {
     
     :returns: A `UIViewController`responding to `ENSideMenuProtocol` protocol
     */
+    public func surveyControllerSideMenuController () -> ENSideMenuProtocol?
+    {
+        
+        var topController : UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController
+        println(topController)
+        return topMostController()
+    }
     public func sideMenuController () -> ENSideMenuProtocol? {
         var iteration : UIViewController? = self.parentViewController
         if (iteration == nil) {
@@ -96,7 +103,7 @@ public extension UIViewController {
                 iteration = nil
             }
         } while (iteration != nil)
-        
+        println(iteration)
         return iteration as? ENSideMenuProtocol
     }
     
@@ -108,7 +115,7 @@ public extension UIViewController {
         while (topController?.presentedViewController is ENSideMenuProtocol) {
             topController = topController?.presentedViewController
         }
-        
+        println(topController)
         return topController as? ENSideMenuProtocol
     }
 }

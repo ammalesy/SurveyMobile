@@ -19,6 +19,9 @@ class Model: NSObject {
     struct imagePath {
         static var url:NSString = "\(Model.serverPath.url)/images_upload_surveys"
     }
+    struct imageProjectPath {
+        static var url:NSString = "\(Model.serverPath.url)/images_upload"
+    }
     func handleNullString(object:AnyObject)->(NSString){
         if let str = object as? NSString {
             return str

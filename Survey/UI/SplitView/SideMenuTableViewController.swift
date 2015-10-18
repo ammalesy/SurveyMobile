@@ -8,47 +8,53 @@
 
 import UIKit
 
-class MyMenuTableViewController: UITableViewController {
+class SideMenuTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Customize apperance of table view
-        tableView.contentInset = UIEdgeInsetsMake(64.0, 0, 0, 0) //
+        //tableView.contentInset = UIEdgeInsetsMake(94.0, 0, 0, 0) //
         tableView.separatorStyle = .None
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.backgroundColor = ColorUtil.darkGray()
         tableView.scrollsToTop = false
         
         // Preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
         
-        tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
+       self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Top)
+        
+        self.navigationItem.prompt = "Last login : \(Session.sharedInstance.last_login)"
         
     }
-
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-  
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return 2
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as? MenuTableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as? SideMenuTableViewCell
         
         if (cell == nil) {
-            cell = MenuTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
+            cell = SideMenuTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
             let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
             selectedBackgroundView.backgroundColor = UIColor.whiteColor()
             cell!.selectedBackgroundView = selectedBackgroundView
@@ -58,10 +64,17 @@ class MyMenuTableViewController: UITableViewController {
         if(indexPath.row == 0){
             cell!.textLabel?.text = "All Survey"
             cell?.imageView?.image = UIImage(named: "Document-50")
-        }else{
+        }
+        
+        if(indexPath.row == 1){
             cell!.textLabel?.text = "Setting"
             cell?.imageView?.image = UIImage(named: "Settings-50")
         }
+        
+//        if(indexPath.row == 2){
+//            cell!.textLabel?.text = "All Survey"
+//            cell?.imageView?.image = UIImage(named: "Document-50")
+//        }
         
         
         
@@ -87,26 +100,52 @@ class MyMenuTableViewController: UITableViewController {
         var destViewController : UIViewController
         switch (indexPath.row) {
         case 0:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SurveyCollectionViewController") as! UIViewController
-           
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainMenu") as! UIViewController
+            self.splitViewController?.showDetailViewController(destViewController, sender: nil)
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+                    self.splitViewController?.toggleMasterView()
+                }
+                
+                
+            })
+            
+            break
+        case 1:
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NAVSetting") as! UIViewController
+            
+
+            self.splitViewController?.showDetailViewController(destViewController, sender: nil)
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+                    self.splitViewController?.toggleMasterView()
+                }
+                
+                
+            })
+            
+            
+            
             break
         default :
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SyncViewController") as! UIViewController
+            
             break
         }
- 
-        sideMenuController()?.setContentViewController(destViewController)
+        
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

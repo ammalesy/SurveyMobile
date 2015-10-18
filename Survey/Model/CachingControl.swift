@@ -13,6 +13,7 @@ let KEY_SURVEYS_RESULT_LIST_CACHE = "SurVeyResultList"
 let KEY_SEND_SURVEYS = "sendSurveyTimestamp"
 let KEY_UPDATE_SURVEYS = "updateSurveyTimestamp"
 let KEY_IMAGES_SURVEYS = "imagesSurveys"
+let KEY_SESSION = "session"
 
 enum CachingIdentifier : Int {
     
@@ -20,16 +21,18 @@ enum CachingIdentifier : Int {
     case Survey
     case SurVeyResultList
     case SurveyImage
+    case Session
 
 }
 
 var cachingImageOnMemory:NSMutableDictionary = NSMutableDictionary()
+var cachingImagePJOnMemory:NSMutableDictionary = NSMutableDictionary()
 
 class CachingControl: NSObject {
     
     class func getCache(identifier:CachingIdentifier, retriveCacheSuccess: (AnyObject!) -> Void , neverStore: () -> Void){
         if(identifier == CachingIdentifier.Survey){
-            if let surveyCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(KEY_SURVEYS_CACHE) {
+            if let surveyCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("\(KEY_SURVEYS_CACHE)_\(Session.sharedInstance.project_selected)") {
                 var list = NSKeyedUnarchiver.unarchiveObjectWithData(surveyCache as! NSData) as? NSMutableArray
 
                 retriveCacheSuccess(list)
@@ -37,7 +40,7 @@ class CachingControl: NSObject {
                 neverStore()
             }
         }else if(identifier == CachingIdentifier.SurVeyResultList){
-            if let resultListCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(KEY_SURVEYS_RESULT_LIST_CACHE) {
+            if let resultListCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("\(KEY_SURVEYS_RESULT_LIST_CACHE)_\(Session.sharedInstance.project_selected)") {
                 var list = NSKeyedUnarchiver.unarchiveObjectWithData(resultListCache as! NSData) as? NSMutableArray
                 
                 retriveCacheSuccess(list)
@@ -52,6 +55,18 @@ class CachingControl: NSObject {
             }else{
                 neverStore()
             }
+        }else if(identifier == CachingIdentifier.Session){
+            if let resultCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(KEY_SESSION) {
+                
+                println(resultCache)
+                
+                var list:NSArray = (NSKeyedUnarchiver.unarchiveObjectWithData(resultCache as! NSData) as? NSMutableArray)!
+                println("dict =\(list[0])")
+                
+                retriveCacheSuccess(list[0])
+            }else{
+                neverStore()
+            }
         }else{
             neverStore()
         }
@@ -60,19 +75,25 @@ class CachingControl: NSObject {
         if(identifier == CachingIdentifier.Survey)
         {
             let archiver = NSKeyedArchiver.archivedDataWithRootObject(data)
-            NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: KEY_SURVEYS_CACHE)
+            NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: "\(KEY_SURVEYS_CACHE)_\(Session.sharedInstance.project_selected)")
             return NSUserDefaults.standardUserDefaults().synchronize()
         }
         else if(identifier == CachingIdentifier.SurVeyResultList)
         {
             let archiver = NSKeyedArchiver.archivedDataWithRootObject(data)
-            NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: KEY_SURVEYS_RESULT_LIST_CACHE)
+            NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: "\(KEY_SURVEYS_RESULT_LIST_CACHE)_\(Session.sharedInstance.project_selected)")
             return NSUserDefaults.standardUserDefaults().synchronize()
         }
         else if(identifier == CachingIdentifier.SurveyImage)
         {
             let archiver = NSKeyedArchiver.archivedDataWithRootObject(data)
             NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: KEY_IMAGES_SURVEYS)
+            return NSUserDefaults.standardUserDefaults().synchronize()
+        }
+        else if(identifier == CachingIdentifier.Session)
+        {
+            let archiver = NSKeyedArchiver.archivedDataWithRootObject(data)
+            NSUserDefaults.standardUserDefaults().setObject(archiver, forKey: KEY_SESSION)
             return NSUserDefaults.standardUserDefaults().synchronize()
         }
         else
@@ -83,15 +104,19 @@ class CachingControl: NSObject {
     class func clearCache(identifier:CachingIdentifier) {
         if(identifier == CachingIdentifier.Survey){
            
-            NSUserDefaults.standardUserDefaults().removeObjectForKey(KEY_SURVEYS_CACHE)
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("\(KEY_SURVEYS_CACHE)_\(Session.sharedInstance.project_selected)")
 
         }else if(identifier == CachingIdentifier.SurVeyResultList){
             
-            NSUserDefaults.standardUserDefaults().removeObjectForKey(KEY_SURVEYS_RESULT_LIST_CACHE)
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("\(KEY_SURVEYS_RESULT_LIST_CACHE)_\(Session.sharedInstance.project_selected)")
             
         }else if(identifier == CachingIdentifier.SurveyImage){
             
             NSUserDefaults.standardUserDefaults().removeObjectForKey(KEY_IMAGES_SURVEYS)
+            
+        }else if(identifier == CachingIdentifier.Session){
+            
+            NSUserDefaults.standardUserDefaults().removeObjectForKey(KEY_SESSION)
             
         }
     }

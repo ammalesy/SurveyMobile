@@ -43,6 +43,7 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         self.pageViewController.didMoveToParentViewController(self)
         
         self.navigationItem.title = "Question 1 / \(self.survey.pQuestions.count)"
+        self.navigationItem.prompt = String(survey.pSm_name)
         
     }
     

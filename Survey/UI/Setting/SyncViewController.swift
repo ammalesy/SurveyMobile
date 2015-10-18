@@ -9,7 +9,7 @@
 import UIKit
 import SCLAlertView
 
-class SyncViewController: UIViewController,ENSideMenuDelegate {
+class SyncViewController: UIViewController {
 
     @IBOutlet weak var versionLB: UILabel!
     @IBOutlet weak var lastUpdateSendSurveyLB: UILabel!
@@ -67,15 +67,11 @@ class SyncViewController: UIViewController,ENSideMenuDelegate {
             })
         })
     }
-    @IBAction func openMenu(sender: AnyObject) {
-         toggleSideMenuView()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var logo:UIImage = UIImage(named: "logo_survey")!
-        self.navigationItem.titleView = UIImageView(image: logo)
-        self.sideMenuController()?.sideMenu?.delegate = self
+        self.navigationItem.title = "Setting"
+        //self.sideMenuController()?.sideMenu?.delegate = self
         
         self.versionLB.text = "  Version \(VERSION)"
         
@@ -90,6 +86,36 @@ class SyncViewController: UIViewController,ENSideMenuDelegate {
         }) { () -> Void in
             self.lastUpdateUpdateSurveyLB.text = "No surveys content in this device."
         }
+        
+        self.navigationItem.prompt = String(Session.sharedInstance.a_name)
+        
+        
+        
+        /*======== LEFT BAR BUTTON ITEM ==========*/
+        var menuBarButton:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu_66"), style: UIBarButtonItemStyle.Plain, target: self, action: "toggleSideMenu")
+        menuBarButton.tintColor = UIColor.whiteColor()
+        self.navigationItem.leftBarButtonItem = menuBarButton
+        /*======== RIGHT BAR BUTTON ITEM ==========*/
+        var listProjectBarButton:UIBarButtonItem = UIBarButtonItem(title: "List project", style: UIBarButtonItemStyle.Plain, target: self, action: "goToListProject:")
+        listProjectBarButton.tintColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem = listProjectBarButton
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        self.toggleSideMenu()
+//        var logo:UIImage = UIImage(named: "logo_survey")!
+//        self.navigationItem.titleView = UIImageView(image: logo)
+    }
+    func toggleSideMenu(){
+        self.splitViewController?.toggleMasterView()
+    }
+    func goToListProject(sender: AnyObject){
+        AppDelegate.getDelegate().surveys.removeAllObjects()
+        self.splitViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {

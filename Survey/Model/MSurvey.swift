@@ -107,10 +107,12 @@ class MSurvey: Model,NSCoding,NSCopying {
         }else{
             
             Alamofire.request(.GET,
-                "\(Model.basePath.url)/SurveyManagement/surveys?project_name=SurveyNew",
+                "\(Model.basePath.url)/SurveyManagement/surveys?project_name=\(Session.sharedInstance.project_selected)",
                 parameters: nil,
                 encoding:ParameterEncoding.JSON)
                 .responseString { _, _, string, _ in
+                    
+                    println(string)
                     
                 }
                 .responseJSON { _, response, JSON, error in
@@ -175,7 +177,8 @@ class MSurvey: Model,NSCoding,NSCopying {
                         }
                         completionHandler(list)
                     }else{
-                        failure(error?.localizedDescription)
+                        var json:NSDictionary = JSON as! NSDictionary
+                        failure(json.objectForKey("Error") as! NSString)
                     }
             }
         }

@@ -24,14 +24,14 @@ class AlertUtil: NSObject {
         alert.showSuccess(String(title), subTitle: String(detail),colorStyle: 0xeb6f3b, colorTextButton: 0xFFFFFF)
         return alert
     }
-    class func showWaiting(duration:NSTimeInterval?=0.0) -> (SCLAlertView!) {
+    class func showWaiting(duration:NSTimeInterval?=0.0, text:String?="wainting for question data..") -> (SCLAlertView!) {
         var loadingView:SCLAlertView =  SCLAlertView()
         loadingView.showCloseButton = false
         
         if(duration > 0.0){
-            loadingView.showWait("SyncData", subTitle: "wainting for question data..", duration:duration! ,colorStyle: 0xeb6f3b)
+            loadingView.showWait("SyncData", subTitle: text!, duration:duration! ,colorStyle: 0xeb6f3b)
         }else{
-            loadingView.showWait("SyncData", subTitle: "wainting for question data..", colorStyle: 0xeb6f3b)
+            loadingView.showWait("SyncData", subTitle: text!, colorStyle: 0xeb6f3b)
         }
         return loadingView
     }

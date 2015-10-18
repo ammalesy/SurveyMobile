@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1814205E1BD2955D0014E556 /* MProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814205D1BD2955D0014E556 /* MProject.swift */; };
+		181420661BD2974B0014E556 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181420641BD2974B0014E556 /* Project.swift */; };
+		181420671BD2974B0014E556 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181420651BD2974B0014E556 /* Session.swift */; };
+		1814206A1BD298150014E556 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181420691BD298150014E556 /* LoginViewController.swift */; };
+		1814206D1BD2A7050014E556 /* ProjectCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814206C1BD2A7050014E556 /* ProjectCollectionViewController.swift */; };
+		1814206F1BD2AA5F0014E556 /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814206E1BD2AA5F0014E556 /* ProjectCollectionViewCell.swift */; };
 		182CAF451BAB2F2B0034FF29 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CAF441BAB2F2B0034FF29 /* AnswerTableViewCell.swift */; };
 		182CAF471BAD5A3E0034FF29 /* KBUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CAF461BAD5A3E0034FF29 /* KBUITextField.swift */; };
 		182CAF491BAD79BD0034FF29 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CAF481BAD79BD0034FF29 /* DateUtil.swift */; };
+		1842549E1BD36AE50066E142 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1842549D1BD36AE50066E142 /* SplitViewController.swift */; };
+		184254A01BD36AFD0066E142 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1842549F1BD36AFD0066E142 /* SideMenuTableViewController.swift */; };
+		184254A21BD36BB20066E142 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184254A11BD36BB20066E142 /* SideMenuTableViewCell.swift */; };
+		184254A41BD38F4A0066E142 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184254A31BD38F4A0066E142 /* StartViewController.swift */; };
 		18A1B9081BA9C82000F259DE /* MainSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */; };
 		18A9B9FB1BC952770006CAB8 /* NSUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B9FA1BC952770006CAB8 /* NSUILabel.swift */; };
 		18A9B9FD1BC9623D0006CAB8 /* simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A9B9FC1BC9623D0006CAB8 /* simple.png */; };
@@ -28,10 +38,7 @@
 		52735E211BA7DD9A00FF263A /* MUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52735E201BA7DD9A00FF263A /* MUser.swift */; };
 		529959DD1BA711EB0058EACC /* SurveyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959D61BA711EB0058EACC /* SurveyTableViewCell.swift */; };
 		529959DE1BA711EB0058EACC /* SurveyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959D71BA711EB0058EACC /* SurveyTableViewController.swift */; };
-		529959DF1BA711EB0058EACC /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959D81BA711EB0058EACC /* MenuTableViewCell.swift */; };
-		529959E01BA711EB0058EACC /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959D91BA711EB0058EACC /* MyMenuTableViewController.swift */; };
 		529959E11BA711EB0058EACC /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959DB1BA711EB0058EACC /* SyncViewController.swift */; };
-		529959E21BA711EB0058EACC /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959DC1BA711EB0058EACC /* SideMenuNavigationController.swift */; };
 		529959E41BA71F890058EACC /* MQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959E31BA71F890058EACC /* MQuestion.swift */; };
 		529959E61BA720350058EACC /* MAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959E51BA720350058EACC /* MAnswer.swift */; };
 		529959E91BA7ADF40058EACC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959E81BA7ADF40058EACC /* Reachability.swift */; };
@@ -58,9 +65,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1814205D1BD2955D0014E556 /* MProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MProject.swift; sourceTree = "<group>"; };
+		181420641BD2974B0014E556 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		181420651BD2974B0014E556 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		181420691BD298150014E556 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1814206C1BD2A7050014E556 /* ProjectCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewController.swift; sourceTree = "<group>"; };
+		1814206E1BD2AA5F0014E556 /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		182CAF441BAB2F2B0034FF29 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		182CAF461BAD5A3E0034FF29 /* KBUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBUITextField.swift; sourceTree = "<group>"; };
 		182CAF481BAD79BD0034FF29 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		1842549D1BD36AE50066E142 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		1842549F1BD36AFD0066E142 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
+		184254A11BD36BB20066E142 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		184254A31BD38F4A0066E142 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSurveyViewController.swift; sourceTree = "<group>"; };
 		18A9B9FA1BC952770006CAB8 /* NSUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUILabel.swift; sourceTree = "<group>"; };
 		18A9B9FC1BC9623D0006CAB8 /* simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simple.png; sourceTree = "<group>"; };
@@ -82,10 +99,7 @@
 		5296358D1B9996C60065842E /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = "Pods/../build/Debug-iphoneos/Pods-Survey/SCLAlertView.framework"; sourceTree = "<group>"; };
 		529959D61BA711EB0058EACC /* SurveyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTableViewCell.swift; sourceTree = "<group>"; };
 		529959D71BA711EB0058EACC /* SurveyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTableViewController.swift; sourceTree = "<group>"; };
-		529959D81BA711EB0058EACC /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
-		529959D91BA711EB0058EACC /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
 		529959DB1BA711EB0058EACC /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
-		529959DC1BA711EB0058EACC /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationController.swift; sourceTree = "<group>"; };
 		529959E31BA71F890058EACC /* MQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQuestion.swift; sourceTree = "<group>"; };
 		529959E51BA720350058EACC /* MAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAnswer.swift; sourceTree = "<group>"; };
 		529959E81BA7ADF40058EACC /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -126,6 +140,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181420631BD2974B0014E556 /* ShareObject */ = {
+			isa = PBXGroup;
+			children = (
+				181420641BD2974B0014E556 /* Project.swift */,
+				181420651BD2974B0014E556 /* Session.swift */,
+			);
+			path = ShareObject;
+			sourceTree = "<group>";
+		};
+		181420681BD298060014E556 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				181420691BD298150014E556 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1814206B1BD2A65A0014E556 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				1814206C1BD2A7050014E556 /* ProjectCollectionViewController.swift */,
+				1814206E1BD2AA5F0014E556 /* ProjectCollectionViewCell.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		1842549C1BD36AE50066E142 /* SplitView */ = {
+			isa = PBXGroup;
+			children = (
+				1842549D1BD36AE50066E142 /* SplitViewController.swift */,
+				1842549F1BD36AFD0066E142 /* SideMenuTableViewController.swift */,
+				184254A11BD36BB20066E142 /* SideMenuTableViewCell.swift */,
+			);
+			path = SplitView;
+			sourceTree = "<group>";
+		};
 		4A2D946698AC98D565A79911 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +198,7 @@
 				52735E201BA7DD9A00FF263A /* MUser.swift */,
 				524D55AC1BAC2D7F0095F896 /* MSync.swift */,
 				18CDABC81BCA3A0B00C6BF44 /* MImage.swift */,
+				1814205D1BD2955D0014E556 /* MProject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,12 +227,12 @@
 		529959D41BA711EB0058EACC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				181420681BD298060014E556 /* Login */,
+				1814206B1BD2A65A0014E556 /* Project */,
 				522DE30D1BA7FD9500349045 /* Survey */,
 				529959D51BA711EB0058EACC /* Main */,
 				529959DA1BA711EB0058EACC /* Setting */,
-				529959D81BA711EB0058EACC /* MenuTableViewCell.swift */,
-				529959D91BA711EB0058EACC /* MyMenuTableViewController.swift */,
-				529959DC1BA711EB0058EACC /* SideMenuNavigationController.swift */,
+				1842549C1BD36AE50066E142 /* SplitView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -194,6 +245,7 @@
 				529959D71BA711EB0058EACC /* SurveyTableViewController.swift */,
 				18EF0F371BC6C089002698EF /* SurveyCollectionViewController.swift */,
 				18FBA6831BC941DA00494A2A /* SurveyCollectionViewCell.swift */,
+				184254A31BD38F4A0066E142 /* StartViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -243,6 +295,7 @@
 		52CDD9311B998F1A00E462A3 /* Survey */ = {
 			isa = PBXGroup;
 			children = (
+				181420631BD2974B0014E556 /* ShareObject */,
 				5222FC501BA44EF500DB5C33 /* Model */,
 				529635831B99906A0065842E /* ThiredParty */,
 				529959E71BA7ADE00058EACC /* Lib */,
@@ -445,28 +498,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1814206A1BD298150014E556 /* LoginViewController.swift in Sources */,
+				181420671BD2974B0014E556 /* Session.swift in Sources */,
 				524D55AD1BAC2D7F0095F896 /* MSync.swift in Sources */,
+				1814205E1BD2955D0014E556 /* MProject.swift in Sources */,
 				5222FC521BA44F5800DB5C33 /* MSurvey.swift in Sources */,
 				182CAF471BAD5A3E0034FF29 /* KBUITextField.swift in Sources */,
 				18FBA6841BC941DA00494A2A /* SurveyCollectionViewCell.swift in Sources */,
 				529959E41BA71F890058EACC /* MQuestion.swift in Sources */,
+				184254A41BD38F4A0066E142 /* StartViewController.swift in Sources */,
+				1814206F1BD2AA5F0014E556 /* ProjectCollectionViewCell.swift in Sources */,
 				52B8681F1BA1EDB300A6B1BB /* ENSideMenu.swift in Sources */,
+				184254A21BD36BB20066E142 /* SideMenuTableViewCell.swift in Sources */,
 				529959DE1BA711EB0058EACC /* SurveyTableViewController.swift in Sources */,
+				184254A01BD36AFD0066E142 /* SideMenuTableViewController.swift in Sources */,
 				18CDABD11BCA9D9000C6BF44 /* Extension.swift in Sources */,
 				182CAF491BAD79BD0034FF29 /* DateUtil.swift in Sources */,
 				5222FC541BA4503E00DB5C33 /* CachingControl.swift in Sources */,
-				529959DF1BA711EB0058EACC /* MenuTableViewCell.swift in Sources */,
 				529959E61BA720350058EACC /* MAnswer.swift in Sources */,
 				182CAF451BAB2F2B0034FF29 /* AnswerTableViewCell.swift in Sources */,
 				529959EB1BA7B6040058EACC /* AlertUtil.swift in Sources */,
 				18A9B9FB1BC952770006CAB8 /* NSUILabel.swift in Sources */,
 				52CDD9351B998F1A00E462A3 /* AppDelegate.swift in Sources */,
 				529959ED1BA7BA200058EACC /* ColorUtil.swift in Sources */,
-				529959E21BA711EB0058EACC /* SideMenuNavigationController.swift in Sources */,
+				1842549E1BD36AE50066E142 /* SplitViewController.swift in Sources */,
 				5222FC561BA451AA00DB5C33 /* Model.swift in Sources */,
 				18CDABCD1BCA8CB700C6BF44 /* MainTableViewCell.swift in Sources */,
 				18CDABCB1BCA881800C6BF44 /* AnswerTxtTableViewCell.swift in Sources */,
-				529959E01BA711EB0058EACC /* MyMenuTableViewController.swift in Sources */,
+				1814206D1BD2A7050014E556 /* ProjectCollectionViewController.swift in Sources */,
 				529959DD1BA711EB0058EACC /* SurveyTableViewCell.swift in Sources */,
 				522DE30F1BA7FD9500349045 /* SurveyViewController.swift in Sources */,
 				52B868201BA1EDB300A6B1BB /* ENSideMenuNavigationController.swift in Sources */,
@@ -475,6 +534,7 @@
 				529959E91BA7ADF40058EACC /* Reachability.swift in Sources */,
 				18A1B9081BA9C82000F259DE /* MainSurveyViewController.swift in Sources */,
 				529959E11BA711EB0058EACC /* SyncViewController.swift in Sources */,
+				181420661BD2974B0014E556 /* Project.swift in Sources */,
 				18CDABC91BCA3A0B00C6BF44 /* MImage.swift in Sources */,
 				52735E211BA7DD9A00FF263A /* MUser.swift in Sources */,
 			);

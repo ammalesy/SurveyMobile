@@ -11,26 +11,68 @@ import SCLAlertView
 
 let reuseIdentifier = "Cell"
 
-class SurveyCollectionViewController: UICollectionViewController,ENSideMenuDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SurveyCollectionViewCellDelegate {
+class SurveyCollectionViewController: UICollectionViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SurveyCollectionViewCellDelegate {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        /*======== LEFT BAR BUTTON ITEM ==========*/
+        var menuBarButton:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu_66"), style: UIBarButtonItemStyle.Plain, target: self, action: "toggleSideMenu")
+        self.navigationItem.leftBarButtonItem = menuBarButton
+        /*======== RIGHT BAR BUTTON ITEM ==========*/
+        var refreshBarButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refreshData:")
+        refreshBarButton.tintColor = UIColor.whiteColor()
+        var listProjectBarButton:UIBarButtonItem = UIBarButtonItem(title: "List project", style: UIBarButtonItemStyle.Plain, target: self, action: "goToListProject:")
+        self.navigationItem.rightBarButtonItems = [listProjectBarButton,refreshBarButton]
         
 
         // Do any additional setup after loading the view.
-        var logo:UIImage = UIImage(named: "logo_survey")!
-        self.navigationItem.titleView = UIImageView(image: logo)
-        self.sideMenuController()?.sideMenu?.delegate = self
+        
+        self.navigationItem.prompt = "Surveys"
+        
+        self.navigationItem.title = String(Session.sharedInstance.project_name_selected)
+        //self.sideMenuController()?.sideMenu?.delegate = self
         
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
         
         self.syncQuestionFromServer { () -> Void in
+            self.navigationItem.prompt = "Surveys (\(AppDelegate.getDelegate().surveys.count))"
+        }
+        
+    }
+    func toggleSideMenu(){
+        
+        
+        
+        self.splitViewController?.toggleMasterView()
+        
+        
+    }
+    func refreshData(sender: AnyObject) {
+        
+        self.syncQuestionFromServer { () -> Void in
             
         }
+        
+    }
+    func goToListProject(sender: AnyObject){
+        AppDelegate.getDelegate().surveys.removeAllObjects()
+        self.splitViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
+        
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+
+//        var logo:UIImage = UIImage(named: "logo_survey")!
+//        self.navigationItem.titleView = UIImageView(image: logo)
+        
+        
+        
         
     }
     func syncQuestionFromServer(completionHandler:()->Void){
@@ -124,14 +166,15 @@ class SurveyCollectionViewController: UICollectionViewController,ENSideMenuDeleg
                 cell.pImageView.image = imageOnMem
             });
         }
+        
+        cell.layer.shouldRasterize = true;
+        cell.layer.rasterizationScale = UIScreen.mainScreen().scale;
     
         return cell
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        
         var bounds = UIScreen.mainScreen().bounds
-        
         var size = CGSizeMake((bounds.size.width/2)-30, 250)
         return size
         
@@ -147,17 +190,11 @@ class SurveyCollectionViewController: UICollectionViewController,ENSideMenuDeleg
         user.pU_email = "dummy"
         user.pU_tel = "dummy"
         var sb = UIStoryboard(name: "Main",bundle: nil);
-        var controller:MainSurveyViewController = sb.instantiateViewControllerWithIdentifier("MainSurveyViewController") as! MainSurveyViewController
+        var controller:StartViewController = sb.instantiateViewControllerWithIdentifier("StartViewController") as! StartViewController
         controller.user = user
         controller.survey = survey.copy() as! MSurvey
         self.navigationController?.pushViewController(controller, animated: true)
         
-    }
-    @IBAction func refreshData(sender: AnyObject) {
-        
-        self.syncQuestionFromServer { () -> Void in
-           
-        }
     }
     func surveyCollectionViewCell(collectionViewCell: SurveyCollectionViewCell, infoClicked button: UIButton)
     {

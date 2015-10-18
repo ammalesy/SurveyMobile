@@ -39,7 +39,12 @@ class SurveyCollectionViewCell: UICollectionViewCell {
         
         pCountUserLabel.layer.cornerRadius = pCountUserLabel.frame.size.width / 2
         pCountUserLabel.layer.masksToBounds = true
-//        
+        
+        
+        
+        
+        
+//
 //        UIBezierPath(roundedRect: pImageView.frame, cornerRadius: pImageView.layer.cornerRadius)
 //        UIBezierPath(roundedRect: pCountUserLabel.frame, cornerRadius: pCountUserLabel.layer.cornerRadius)
         

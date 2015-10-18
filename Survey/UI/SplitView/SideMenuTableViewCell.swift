@@ -8,39 +8,53 @@
 
 import UIKit
 
-class MenuTableViewCell: UITableViewCell {
-
+class SideMenuTableViewCell: UITableViewCell {
+    
     var indexPath:NSIndexPath!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         if(selected){
             self.backgroundColor = UIColor.clearColor()
             self.textLabel!.textColor = ColorUtil.darkGray()
-            if(indexPath.row == 1){
-                self.imageView?.image = UIImage(named: "Settings-50_selected")
-            }else{
+            
+            if(indexPath.row == 0){
                 self.imageView?.image = UIImage(named: "Document-50_selected")
             }
+            
+            if(indexPath.row == 1){
+                self.imageView?.image = UIImage(named: "Settings-50_selected")
+            }
+            
+//            if(indexPath.row == 2){
+//                self.imageView?.image = UIImage(named: "Settings-50_selected")
+//            }
 
+            
         }else{
             self.backgroundColor = UIColor.clearColor()
             self.textLabel!.textColor = UIColor.whiteColor()
-            if(indexPath.row == 1){
-                self.imageView?.image = UIImage(named: "Settings-50")
-            }else{
+            
+            if(indexPath.row == 0){
                 self.imageView?.image = UIImage(named: "Document-50")
             }
-
+            
+            if(indexPath.row == 1){
+                self.imageView?.image = UIImage(named: "Settings-50")
+            }
+            
+//            if(indexPath.row == 2){
+//                self.imageView?.image = UIImage(named: "Settings-50")
+//            }
             
         }
         
     }
-
+    
 }
