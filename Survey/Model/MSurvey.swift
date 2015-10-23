@@ -139,6 +139,9 @@ class MSurvey: Model,NSCoding,NSCopying {
                             var questions:NSMutableArray = survey.handleNullArray(json[indexMain].objectForKey("questions")!)
                             var listQuestion:NSMutableArray = NSMutableArray()
                             for(var indexQuestion = 0; indexQuestion < questions.count; indexQuestion++){
+                                var isActive = survey.handleNullString(questions[indexQuestion].objectForKey("active")!)
+                                if(isActive.isEqualToString("N")){continue;}
+                                
                                 var m_question:MQuestion = MQuestion()
                                 m_question.pAq_id = survey.handleNullString(questions[indexQuestion].objectForKey("aq_id")!)
                                 m_question.pAq_description = survey.handleNullString(questions[indexQuestion].objectForKey("aq_description")!)

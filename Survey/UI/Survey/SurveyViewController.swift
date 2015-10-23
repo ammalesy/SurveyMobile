@@ -179,7 +179,7 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(TEXTBOX_IDENTIFIER)){
             answer.pChecked = true
         }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_IDENTIFIER)){
-            answer.pChecked = !answer.pChecked
+            answer.pChecked = true
             self.resetAnotherRadio(answer)
         }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_TEXTBOX_IDENTIFIER)){
             answer.pChecked = !answer.pChecked
@@ -190,18 +190,20 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
             self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             
         }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER)){
-            answer.pChecked = !answer.pChecked
-            if(answer.pChecked == false){
-                answer.pTextFromTxtBox = ""
-            }
+            answer.pChecked = true
+            answer.pTextFromTxtBox = ""
+            
             self.resetAnotherRadio(answer)
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            
         }
         
     }
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath.row) as! MAnswer
         
-        if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER)){
+        if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER) ||
+           answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_IDENTIFIER)){
             var arrayRefresh:NSMutableArray = NSMutableArray()
             answer.pChecked = true
             arrayRefresh.addObject(indexPath)
@@ -233,6 +235,7 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
                    ans.pAnswerStyle.pAs_identifier == RADIO_TEXTBOX_IDENTIFIER
                 {
                     ans.pChecked = false
+                    ans.pTextFromTxtBox = ""
                     arrayRefresh.addObject(NSIndexPath(forRow: i, inSection: 0))
                 }
             }
