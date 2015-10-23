@@ -21,6 +21,8 @@
 		184254A21BD36BB20066E142 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184254A11BD36BB20066E142 /* SideMenuTableViewCell.swift */; };
 		184254A41BD38F4A0066E142 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184254A31BD38F4A0066E142 /* StartViewController.swift */; };
 		18A1B9081BA9C82000F259DE /* MainSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */; };
+		18A2909F1BD7E5A000551F48 /* MAnswerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A2909E1BD7E5A000551F48 /* MAnswerStyle.swift */; };
+		18A290A11BDA026E00551F48 /* AnswerTxtChkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A290A01BDA026E00551F48 /* AnswerTxtChkTableViewCell.swift */; };
 		18A9B9FB1BC952770006CAB8 /* NSUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B9FA1BC952770006CAB8 /* NSUILabel.swift */; };
 		18A9B9FD1BC9623D0006CAB8 /* simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A9B9FC1BC9623D0006CAB8 /* simple.png */; };
 		18CDABC91BCA3A0B00C6BF44 /* MImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDABC81BCA3A0B00C6BF44 /* MImage.swift */; };
@@ -79,6 +81,8 @@
 		184254A11BD36BB20066E142 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		184254A31BD38F4A0066E142 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		18A1B9071BA9C82000F259DE /* MainSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSurveyViewController.swift; sourceTree = "<group>"; };
+		18A2909E1BD7E5A000551F48 /* MAnswerStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAnswerStyle.swift; sourceTree = "<group>"; };
+		18A290A01BDA026E00551F48 /* AnswerTxtChkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTxtChkTableViewCell.swift; sourceTree = "<group>"; };
 		18A9B9FA1BC952770006CAB8 /* NSUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUILabel.swift; sourceTree = "<group>"; };
 		18A9B9FC1BC9623D0006CAB8 /* simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simple.png; sourceTree = "<group>"; };
 		18CDABC81BCA3A0B00C6BF44 /* MImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MImage.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				5222FC511BA44F5800DB5C33 /* MSurvey.swift */,
 				529959E31BA71F890058EACC /* MQuestion.swift */,
 				529959E51BA720350058EACC /* MAnswer.swift */,
+				18A2909E1BD7E5A000551F48 /* MAnswerStyle.swift */,
 				5222FC531BA4503E00DB5C33 /* CachingControl.swift */,
 				5222FC551BA451AA00DB5C33 /* Model.swift */,
 				52735E201BA7DD9A00FF263A /* MUser.swift */,
@@ -211,6 +216,7 @@
 				182CAF441BAB2F2B0034FF29 /* AnswerTableViewCell.swift */,
 				18CDABCA1BCA881800C6BF44 /* AnswerTxtTableViewCell.swift */,
 				18CDABCC1BCA8CB700C6BF44 /* MainTableViewCell.swift */,
+				18A290A01BDA026E00551F48 /* AnswerTxtChkTableViewCell.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				1814206A1BD298150014E556 /* LoginViewController.swift in Sources */,
 				181420671BD2974B0014E556 /* Session.swift in Sources */,
 				524D55AD1BAC2D7F0095F896 /* MSync.swift in Sources */,
+				18A2909F1BD7E5A000551F48 /* MAnswerStyle.swift in Sources */,
 				1814205E1BD2955D0014E556 /* MProject.swift in Sources */,
 				5222FC521BA44F5800DB5C33 /* MSurvey.swift in Sources */,
 				182CAF471BAD5A3E0034FF29 /* KBUITextField.swift in Sources */,
@@ -517,6 +524,7 @@
 				5222FC541BA4503E00DB5C33 /* CachingControl.swift in Sources */,
 				529959E61BA720350058EACC /* MAnswer.swift in Sources */,
 				182CAF451BAB2F2B0034FF29 /* AnswerTableViewCell.swift in Sources */,
+				18A290A11BDA026E00551F48 /* AnswerTxtChkTableViewCell.swift in Sources */,
 				529959EB1BA7B6040058EACC /* AlertUtil.swift in Sources */,
 				18A9B9FB1BC952770006CAB8 /* NSUILabel.swift in Sources */,
 				52CDD9351B998F1A00E462A3 /* AppDelegate.swift in Sources */,

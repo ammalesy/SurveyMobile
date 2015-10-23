@@ -18,9 +18,11 @@ class MAnswer: Model,NSCoding,NSCopying {
     var pAa_color:NSString!
     var pActive:NSString!
     var pChecked:Bool = false
+    var pAnswerStyle:MAnswerStyle!
+
     
     //temporary
-    var pTextFromTxtBox:NSString!
+    var pTextFromTxtBox:NSString = ""
     
     func copyWithZone(zone: NSZone) -> AnyObject {
         let obj:MAnswer = MAnswer()
@@ -31,6 +33,7 @@ class MAnswer: Model,NSCoding,NSCopying {
         obj.pType = self.pType
         obj.pActive = self.pActive
         obj.pChecked = self.pChecked
+        obj.pAnswerStyle = self.pAnswerStyle
         
         obj.pTextFromTxtBox = self.pTextFromTxtBox
         return obj
@@ -46,8 +49,9 @@ class MAnswer: Model,NSCoding,NSCopying {
         self.pType  = aDecoder.decodeObjectForKey("pType") as? NSString
         self.pActive  = aDecoder.decodeObjectForKey("pActive") as? NSString
         self.pChecked  = (aDecoder.decodeObjectForKey("pChecked") as? Bool)!
+        self.pAnswerStyle  = aDecoder.decodeObjectForKey("pAnswerStyle") as? MAnswerStyle
         
-        self.pTextFromTxtBox  = aDecoder.decodeObjectForKey("pTextFromTxtBox") as? NSString
+        self.pTextFromTxtBox  = (aDecoder.decodeObjectForKey("pTextFromTxtBox") as? NSString)!
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -72,8 +76,11 @@ class MAnswer: Model,NSCoding,NSCopying {
         if let val = self.pActive{
             aCoder.encodeObject(val, forKey: "pActive")
         }
-        if let val = self.pTextFromTxtBox{
-            aCoder.encodeObject(val, forKey: "pTextFromTxtBox")
+        //if let val = self.pTextFromTxtBox{
+            aCoder.encodeObject(self.pTextFromTxtBox, forKey: "pTextFromTxtBox")
+        //}
+        if let val = self.pAnswerStyle{
+            aCoder.encodeObject(val, forKey: "pAnswerStyle")
         }
         //if let val = self.pChecked{
             aCoder.encodeObject(self.pChecked, forKey: "pChecked")

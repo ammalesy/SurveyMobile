@@ -90,7 +90,37 @@
                   moduleName = "Survey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenuNavigationController.swift"
-                  timestampString = "466854464.172498"
+                  timestampString = "467284705.051419"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Survey.ENSideMenuNavigationController.setContentViewController (Survey.ENSideMenuNavigationController)(ObjectiveC.UIViewController) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenuNavigationController.swift"
+                  timestampString = "467284705.051709"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Survey.ENSideMenuNavigationController.setContentViewController (Survey.ENSideMenuNavigationController)(ObjectiveC.UIViewController) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenuNavigationController.swift"
+                  timestampString = "467284705.051863"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
@@ -101,46 +131,16 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Survey.ENSideMenuNavigationController.setContentViewController (Survey.ENSideMenuNavigationController)(ObjectiveC.UIViewController) -&gt; ()"
-                  moduleName = "Survey"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenuNavigationController.swift"
-                  timestampString = "466854464.172679"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "116">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
                   symbolName = "@objc Survey.ENSideMenuNavigationController.setContentViewController (Survey.ENSideMenuNavigationController)(ObjectiveC.UIViewController) -&gt; ()"
                   moduleName = "Survey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenuNavigationController.swift"
-                  timestampString = "466854464.172859"
+                  timestampString = "467284705.051992"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
                   endingLineNumber = "44"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "@objc Survey.ENSideMenuNavigationController.setContentViewController (Survey.ENSideMenuNavigationController)(ObjectiveC.UIViewController) -&gt; ()"
-                  moduleName = "Survey"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenuNavigationController.swift"
-                  timestampString = "466854464.173014"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "148">
+                  offsetFromSymbolStart = "136">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -168,12 +168,12 @@
                   moduleName = "Survey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenu.swift"
-                  timestampString = "466854464.174701"
+                  timestampString = "467284705.053646"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "390"
                   endingLineNumber = "390"
-                  offsetFromSymbolStart = "156">
+                  offsetFromSymbolStart = "128">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -183,12 +183,12 @@
                   moduleName = "Survey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenu.swift"
-                  timestampString = "466854464.174896"
+                  timestampString = "467284705.053878"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "390"
                   endingLineNumber = "390"
-                  offsetFromSymbolStart = "164">
+                  offsetFromSymbolStart = "137">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -198,12 +198,12 @@
                   moduleName = "Survey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenu.swift"
-                  timestampString = "466854464.175034"
+                  timestampString = "467284705.054075"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "390"
                   endingLineNumber = "390"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "23">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -213,14 +213,314 @@
                   moduleName = "Survey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/ThiredParty/ENSideMenu.swift"
-                  timestampString = "466854464.175198"
+                  timestampString = "467284705.054229"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "390"
                   endingLineNumber = "390"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "23">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/Model/MSurvey.swift"
+            timestampString = "467276153.888087"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "get_surveys(_:failure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/Model/MSurvey.swift"
+            timestampString = "467276300.50299"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "get_surveys(_:failure:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Survey.MSurvey.(get_surveys (Survey.MSurvey.Type) -&gt; ((ObjectiveC.NSMutableArray) -&gt; (), failure : (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSString&gt;) -&gt; ()) -&gt; ()).(closure #2)"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/Model/MSurvey.swift"
+                  timestampString = "467284705.056126"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Survey.MSurvey.(get_surveys (Survey.MSurvey.Type) -&gt; ((ObjectiveC.NSMutableArray) -&gt; (), failure : (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSString&gt;) -&gt; ()) -&gt; ()).(closure #2)"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/Model/MSurvey.swift"
+                  timestampString = "467284705.056284"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/Model/MSurvey.swift"
+            timestampString = "467276320.121555"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "get_surveys(_:failure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/Model/MSurvey.swift"
+            timestampString = "467282714.469169"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "get_surveys(_:failure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/UI/Survey/SurveyViewController.swift"
+            timestampString = "467285449.705368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/UI/Survey/AnswerTableViewCell.swift"
+            timestampString = "467281898.773414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "setSelected(_:animated:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Survey.AnswerTableViewCell.setSelected (Survey.AnswerTableViewCell)(Swift.Bool, animated : Swift.Bool) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/AnswerTableViewCell.swift"
+                  timestampString = "467284705.059113"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "95">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Survey.AnswerTableViewCell.setSelected (Survey.AnswerTableViewCell)(Swift.Bool, animated : Swift.Bool) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/AnswerTableViewCell.swift"
+                  timestampString = "467284705.059345"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "206">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Survey.AnswerTableViewCell.setSelected (Survey.AnswerTableViewCell)(Swift.Bool, animated : Swift.Bool) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/AnswerTableViewCell.swift"
+                  timestampString = "467284705.059564"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Survey.AnswerTableViewCell.setSelected (Survey.AnswerTableViewCell)(Swift.Bool, animated : Swift.Bool) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/AnswerTableViewCell.swift"
+                  timestampString = "467284705.059781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "235">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/UI/Survey/AnswerTableViewCell.swift"
+            timestampString = "467281900.061313"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "setSelected(_:animated:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Survey.AnswerTableViewCell.setSelected (Survey.AnswerTableViewCell)(Swift.Bool, animated : Swift.Bool) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/AnswerTableViewCell.swift"
+                  timestampString = "467284705.061791"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "151">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Survey.AnswerTableViewCell.setSelected (Survey.AnswerTableViewCell)(Swift.Bool, animated : Swift.Bool) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/AnswerTableViewCell.swift"
+                  timestampString = "467284705.062052"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "387">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Survey.AnswerTableViewCell.setSelected (Survey.AnswerTableViewCell)(Swift.Bool, animated : Swift.Bool) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/AnswerTableViewCell.swift"
+                  timestampString = "467284705.062269"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Survey.AnswerTableViewCell.setSelected (Survey.AnswerTableViewCell)(Swift.Bool, animated : Swift.Bool) -&gt; ()"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/AnswerTableViewCell.swift"
+                  timestampString = "467284705.062457"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "416">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/UI/Survey/SurveyViewController.swift"
+            timestampString = "467285449.705368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Survey/UI/Survey/SurveyViewController.swift"
+            timestampString = "467285449.705368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

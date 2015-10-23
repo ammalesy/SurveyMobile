@@ -13,6 +13,7 @@ class SplitViewController: UISplitViewController,UISplitViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        self.presentsWithGesture = false
 
         // Do any additional setup after loading the view.
     }

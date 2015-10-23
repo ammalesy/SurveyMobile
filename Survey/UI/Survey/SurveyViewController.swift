@@ -9,7 +9,13 @@
 
 import UIKit
 
-class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,AnswerTxtTableViewCellDelegate {
+let CHECKBOX_IDENTIFIER = "0"
+let TEXTBOX_IDENTIFIER = "1"
+let RADIO_IDENTIFIER = "2"
+let CHECKBOX_TEXTBOX_IDENTIFIER = "3"
+let RADIO_TEXTBOX_IDENTIFIER = "4"
+
+class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,AnswerTxtTableViewCellDelegate,AnswerTxtChkTableViewCellDelegate {
     
     var user:MUser!
     var numberOfQuestion:NSInteger!
@@ -63,19 +69,33 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath.row) as! MAnswer
+        
+        if(answer.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_TEXTBOX_IDENTIFIER) ||
+            answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER)){
+                
+                if(answer.pChecked == false){
+                    return 75
+                }else{
+                    return 111
+                }
+                
+                
+        }
+        
+        return 75
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath.row) as! MAnswer
         
-        if(answer.pType.isEqualToString("0")){
+        if(answer.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_IDENTIFIER)){
             
             var cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
             println(cell)
             cell.seq.text = "\(indexPath.row + 1)"
             cell.ansDescription.text = "\(answer.pAa_description)"
-            cell.ansDescription.textColor = UIColor(hexString: answer.pAa_color)
+            cell.ansDescription.textColor = UIColor(hexString: answer.pAnswerStyle.pAs_text_color)
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if(answer.pChecked){
@@ -87,21 +107,27 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             return cell
         
-        }else if(answer.pType.isEqualToString("1")){
+        }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(TEXTBOX_IDENTIFIER)){
             
             var cell:AnswerTxtTableViewCell = tableView.dequeueReusableCellWithIdentifier("CellTxt") as! AnswerTxtTableViewCell
             cell.seq.text = "\(indexPath.row + 1)";
+            if(answer.pChecked == true){
+                if(String(answer.pTextFromTxtBox) != nil){
+                    cell.ansDescriptionTxt.text = String(answer.pTextFromTxtBox)
+                }
+            }
+            
             cell.ansDescriptionTxt.placeholder = "\(answer.pAa_description)"
-            cell.ansDescriptionTxt.textColor = UIColor(hexString: answer.pAa_color)
+            cell.ansDescriptionTxt.textColor = UIColor(hexString: answer.pAnswerStyle.pAs_text_color)
             cell.delegate = self
             return cell
             
-        }else{
+        }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_IDENTIFIER)){
             
             var cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
             cell.seq.text = "\(indexPath.row + 1)";
             cell.ansDescription.text = "\(answer.pAa_description)"
-            cell.ansDescription.textColor = UIColor(hexString: answer.pAa_color)
+            cell.ansDescription.textColor = UIColor(hexString: answer.pAnswerStyle.pAs_text_color)
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if(answer.pChecked){
@@ -113,24 +139,69 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             return cell
             
+        }else if((answer.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_TEXTBOX_IDENTIFIER)) ||
+                 (answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER))){
+            
+            var cell:AnswerTxtChkTableViewCell = tableView.dequeueReusableCellWithIdentifier("CellTxtChk") as! AnswerTxtChkTableViewCell
+            cell.seq.text = "\(indexPath.row + 1)";
+            cell.ansDescription.text = "\(answer.pAa_description)"
+            cell.ansDescription.textColor = UIColor(hexString: answer.pAnswerStyle.pAs_text_color)
+            if(answer.pChecked == true){
+                if(String(answer.pTextFromTxtBox) != nil){
+                    cell.ansDescriptionTxt.text = String(answer.pTextFromTxtBox)
+                }
+            }
+            
+            cell.ansDescriptionTxt.placeholder = "ระบุ"
+            cell.delegate = self
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if(answer.pChecked){
+                    cell.markImageView.image = UIImage(named: "mark")
+                    cell.ansDescriptionTxt.alpha = 1
+                }else{
+                    cell.markImageView.image = UIImage(named: "not-mark")
+                    cell.ansDescriptionTxt.alpha = 0
+                }
+            })
+            
+            return cell
+            
+        }else{
+            return UITableViewCell()
         }
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath.row) as! MAnswer
         
-        if(answer.pType.isEqualToString("0")){
+        if(answer.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_IDENTIFIER)){
             answer.pChecked = !answer.pChecked
-        }else if(answer.pType.isEqualToString("1")){
+        }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(TEXTBOX_IDENTIFIER)){
             answer.pChecked = true
-        }else{
+        }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_IDENTIFIER)){
             answer.pChecked = !answer.pChecked
             self.resetAnotherRadio(answer)
+        }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_TEXTBOX_IDENTIFIER)){
+            answer.pChecked = !answer.pChecked
+            if(answer.pChecked == false){
+                answer.pTextFromTxtBox = ""
+            }
+            
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            
+        }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER)){
+            answer.pChecked = !answer.pChecked
+            if(answer.pChecked == false){
+                answer.pTextFromTxtBox = ""
+            }
+            self.resetAnotherRadio(answer)
         }
+        
     }
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath.row) as! MAnswer
         
-        if(answer.pType.isEqualToString("2")){
+        if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER)){
             var arrayRefresh:NSMutableArray = NSMutableArray()
             answer.pChecked = true
             arrayRefresh.addObject(indexPath)
@@ -145,14 +216,22 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         answer.pTextFromTxtBox = string
         println(string)
     }
-    
+    func answerTxtChkTableViewCell(cell: AnswerTxtChkTableViewCell, shouldInputString string: NSString) {
+        let indexPath = self.tableView!.indexPathForCell(cell as UITableViewCell)
+        let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath!.row) as! MAnswer
+        
+        answer.pTextFromTxtBox = string
+        println(string)
+    }
     func resetAnotherRadio(answerSelected:MAnswer){
         //RESET ANOTHER RADIO
         var i:NSInteger = 0
         var arrayRefresh:NSMutableArray = NSMutableArray()
         for ans:MAnswer in question.pAnswers as Array as! [MAnswer] {
             if answerSelected.pAa_id != ans.pAa_id {
-                if ans.pType == "2" {
+                if ans.pAnswerStyle.pAs_identifier == RADIO_IDENTIFIER ||
+                   ans.pAnswerStyle.pAs_identifier == RADIO_TEXTBOX_IDENTIFIER
+                {
                     ans.pChecked = false
                     arrayRefresh.addObject(NSIndexPath(forRow: i, inSection: 0))
                 }
@@ -167,7 +246,8 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         for ans:MAnswer in question.pAnswers as Array as! [MAnswer] {
             
-            if ans.pType == "2" {
+            if ans.pAnswerStyle.pAs_identifier == RADIO_IDENTIFIER ||
+               ans.pAnswerStyle.pAs_identifier == RADIO_TEXTBOX_IDENTIFIER{
                 if(ans.pChecked == true) {
                     notSelectYet = false
                     break;
@@ -179,7 +259,8 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         if(notSelectYet == true){
             for ans:MAnswer in question.pAnswers as Array as! [MAnswer] {
             
-                if ans.pType == "2" {
+                if ans.pAnswerStyle.pAs_identifier == RADIO_IDENTIFIER ||
+                   ans.pAnswerStyle.pAs_identifier == RADIO_TEXTBOX_IDENTIFIER{
                     ans.pChecked = true
                     break;
                 }

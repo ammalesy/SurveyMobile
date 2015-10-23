@@ -160,7 +160,17 @@ class MSurvey: Model,NSCoding,NSCopying {
                                     m_answer.pAa_color = survey.handleNullString(answers[indexAns].objectForKey("aa_color")!)
                                     m_answer.pActive = survey.handleNullString(answers[indexAns].objectForKey("active")!)
                                     
-                                    if(m_answer.pType.isEqualToString("1")){
+
+                                    var styleDict:NSDictionary = answers[indexAns].objectForKey("style")! as! NSDictionary
+                                    var style:MAnswerStyle = MAnswerStyle()
+                                    style.pAs_id = survey.handleNullString(styleDict.objectForKey("as_id")!)
+                                    style.pAs_name = survey.handleNullString(styleDict.objectForKey("as_name")!)
+                                    style.pAs_description = survey.handleNullString(styleDict.objectForKey("as_description")!)
+                                    style.pAs_identifier = survey.handleNullString(styleDict.objectForKey("as_identifier")!)
+                                    style.pAs_text_color = survey.handleNullString(styleDict.objectForKey("as_text_color")!)
+                                    
+                                    m_answer.pAnswerStyle = style
+                                    if(m_answer.pAnswerStyle.pAs_identifier.isEqualToString(TEXTBOX_IDENTIFIER)){
                                         m_answer.pChecked = true
                                     }else{
                                         m_answer.pChecked = false

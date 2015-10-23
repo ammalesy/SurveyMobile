@@ -58,9 +58,12 @@ class MSync: Model,NSCoding {
             for ans:MAnswer in listAnswer as Array as! [MAnswer] {
                 if (ans.pChecked == true) {
                     
-                    if(ans.pType.isEqualToString("0")){
+                    if(ans.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_IDENTIFIER)){
                         listAns.addObject(["aa_id":ans.pAa_id])
-                    }else if(ans.pType.isEqualToString("1")){
+                    }else if(ans.pAnswerStyle.pAs_identifier.isEqualToString(TEXTBOX_IDENTIFIER) ||
+                             ans.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_TEXTBOX_IDENTIFIER) ||
+                             ans.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER))
+                    {
                         listAns.addObject(["aa_id":ans.pAa_id,
                                             "text":ans.pTextFromTxtBox])
                     }else{
