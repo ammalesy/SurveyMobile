@@ -9,7 +9,7 @@
 import UIKit
 import SCLAlertView
 
-class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UITextFieldDelegate {
+class SurveyTableViewController: UITableViewController,UITextFieldDelegate {
 
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
@@ -19,9 +19,9 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var logo:UIImage = UIImage(named: "logo_survey")!
+        let logo:UIImage = UIImage(named: "logo_survey")!
         self.navigationItem.titleView = UIImageView(image: logo)
-        self.sideMenuController()?.sideMenu?.delegate = self
+        //self.sideMenuController()?.sideMenu?.delegate = self
         
         self.syncQuestionFromServer { () -> Void in
             
@@ -47,7 +47,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
             completionHandler()
             
         }) { () -> Void in
-                var loadingView:SCLAlertView =  AlertUtil.showWaiting()
+                let loadingView:SCLAlertView =  AlertUtil.showWaiting()
                 MSurvey.get_surveys({ (surveys) -> Void in
                     loadingView.hideView()
                     AppDelegate.getDelegate().surveys = surveys
@@ -71,7 +71,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
     }
     func addErrorLabelToTable(string:NSString!){
         self.removeErrorLabelAtTable()
-        var lb:UILabel = UILabel(frame: CGRectMake((self.tableView.frame.size.width / 2) - 160, 30, 320, 60))
+        let lb:UILabel = UILabel(frame: CGRectMake((self.tableView.frame.size.width / 2) - 160, 30, 320, 60))
         
         lb.textColor = ColorUtil.blueSky()
         lb.text = String(string)
@@ -95,7 +95,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
     
     @IBAction func openLeftPanel(sender: AnyObject)
     {
-        toggleSideMenuView()
+        //toggleSideMenuView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,7 +127,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
         return 120
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var view:UILabel = UILabel()
+        let view:UILabel = UILabel()
         view.backgroundColor = UIColor.whiteColor()//UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
         view.text = "  All survey (\(AppDelegate.getDelegate().surveys.count))"
         view.textColor = UIColor(red: 94/255.0, green: 190/255.0, blue: 202/255.0, alpha: 1)
@@ -145,22 +145,22 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
+        let survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
         
-        var returnObj = AlertUtil.showInformation { (nameTxt, surnameTxt, ageTxt,telTxt, emailTxt, sexSeg) -> Void in
+        let returnObj = AlertUtil.showInformation { (nameTxt, surnameTxt, ageTxt,telTxt, emailTxt, sexSeg) -> Void in
             
             if( nameTxt.text != "" && surnameTxt.text != "" )
             {
                 if(ageTxt.text == nil || ageTxt.text == "") {ageTxt.text = "0"}
-                var user:MUser = MUser()
+                let user:MUser = MUser()
                 user.pU_firstname = nameTxt.text
                 user.pU_surname = surnameTxt.text
-                user.pU_age = ageTxt.text.toInt()
+                user.pU_age = Int(ageTxt.text!)
                 user.pU_sex = sexSeg.selectedSegmentIndex
                 user.pU_email = emailTxt.text
                 user.pU_tel = telTxt.text
-                var sb = UIStoryboard(name: "Main",bundle: nil);
-                var controller:MainSurveyViewController = sb.instantiateViewControllerWithIdentifier("MainSurveyViewController") as! MainSurveyViewController
+                let sb = UIStoryboard(name: "Main",bundle: nil);
+                let controller:MainSurveyViewController = sb.instantiateViewControllerWithIdentifier("MainSurveyViewController") as! MainSurveyViewController
                 controller.user = user
                 controller.survey = survey.copy() as! MSurvey
                 self.navigationController?.pushViewController(controller, animated: true)
@@ -186,10 +186,10 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
         if(textField.tag != 999) {
             textField.inputAccessoryView = nil
             
-            var containerView:UIView = UIView(frame: CGRectMake(0, 0, 0, 30))
+            let containerView:UIView = UIView(frame: CGRectMake(0, 0, 0, 30))
             containerView.backgroundColor = ColorUtil.blueSky()
             
-            var tempTxtField:KBUITextField = KBUITextField(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.width - 20, 30))
+            let tempTxtField:KBUITextField = KBUITextField(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.width - 20, 30))
             tempTxtField.backgroundColor = ColorUtil.blueSky()
             tempTxtField.borderStyle = UITextBorderStyle.None
             tempTxtField.placeholder = textField.placeholder
@@ -210,7 +210,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
 
         if(textfield.tag != 999){
             
-            var accTxt = textfield.inputAccessoryView!.viewWithTag(999) as! UITextField
+            let accTxt = textfield.inputAccessoryView!.viewWithTag(999) as! UITextField
             accTxt.text = textfield.text
         
         }else{
@@ -229,7 +229,7 @@ class SurveyTableViewController: UITableViewController,ENSideMenuDelegate,UIText
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SurveyTableViewCell
-        var survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
+        let survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
         cell.pTitle.text = survey.pSm_name as String
         cell.pDescription.text = survey.pSm_description as String
         cell.pAmount.text = String(survey.pCountUser)

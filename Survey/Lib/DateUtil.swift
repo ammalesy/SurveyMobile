@@ -10,7 +10,7 @@ import UIKit
 
 class DateUtil: NSObject {
     class func dateFormater()->NSDateFormatter{
-        var gregorianCalendar = NSCalendar(identifier:NSCalendarIdentifierGregorian)
+        let gregorianCalendar = NSCalendar(identifier:NSCalendarIdentifierGregorian)
         let formatDate:NSDateFormatter = NSDateFormatter()
         formatDate.calendar = gregorianCalendar
         formatDate.dateFormat = "yyyy-MM-dd HH:mm:ss"

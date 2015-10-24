@@ -7,8 +7,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Alamofire', '~> 2.0'
-pod 'SCLAlertView'
+pod 'Alamofire', '~> 3.0'
+pod 'SCLAlertView', '~> 0.4.3'
 
 end
 

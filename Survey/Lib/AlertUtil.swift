@@ -11,12 +11,12 @@ import SCLAlertView
 
 class AlertUtil: NSObject {
     class func showAlertError(title:NSString!,detail:NSString!) -> (SCLAlertView!) {
-        var alert:SCLAlertView = SCLAlertView()
+        let alert:SCLAlertView = SCLAlertView()
         alert.showError(String(title), subTitle: String(detail),colorStyle: 0xeb6f3b, colorTextButton: 0xFFFFFF)
         return alert
     }
     class func showAlertSuccess(title:NSString!,detail:NSString!,completion:()->Void!) -> (SCLAlertView!) {
-        var alert:SCLAlertView = SCLAlertView()
+        let alert:SCLAlertView = SCLAlertView()
         alert.showCloseButton = false
         alert.addButton("Done", action: { () -> Void in
             completion()
@@ -25,7 +25,7 @@ class AlertUtil: NSObject {
         return alert
     }
     class func showWaiting(duration:NSTimeInterval?=0.0, text:String?="wainting for question data..") -> (SCLAlertView!) {
-        var loadingView:SCLAlertView =  SCLAlertView()
+        let loadingView:SCLAlertView =  SCLAlertView()
         loadingView.showCloseButton = false
         
         if(duration > 0.0){
@@ -40,12 +40,12 @@ class AlertUtil: NSObject {
        
         let alert = SCLAlertView()
 
-        let name = alert.addTextField(title:"Enter your firstname")
-        let surname = alert.addTextField(title:"Enter your surname")
-        let age = alert.addTextField(title:"Enter your age")
-        let tel = alert.addTextField(title:"Enter your Tel.")
-        let email = alert.addTextField(title:"Enter your email")
-        let sexTxt = alert.addTextField(title: "")
+        let name = alert.addTextField("Enter your firstname")
+        let surname = alert.addTextField("Enter your surname")
+        let age = alert.addTextField("Enter your age")
+        let tel = alert.addTextField("Enter your Tel.")
+        let email = alert.addTextField("Enter your email")
+        let sexTxt = alert.addTextField("")
             
         name.tag = 0
         surname.tag = 1
@@ -55,7 +55,7 @@ class AlertUtil: NSObject {
             
         age.keyboardType = UIKeyboardType.NumberPad
         
-        var segmentSex = UISegmentedControl(items: ["Male","Female"])
+        let segmentSex = UISegmentedControl(items: ["Male","Female"])
         segmentSex.selectedSegmentIndex = 0
         segmentSex.tintColor = ColorUtil.blueSky()
         segmentSex.frame = CGRectMake(12, 325, 216, 35)

@@ -49,7 +49,7 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var view:UILabel = UILabel()
+        let view:UILabel = UILabel()
         view.backgroundColor = UIColor.whiteColor()
         view.text = "  Answers : (\(question.pAnswers.count))"
         view.textColor = ColorUtil.orangeStronger()
@@ -91,8 +91,8 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         if(answer.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_IDENTIFIER)){
             
-            var cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
-            println(cell)
+            let cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
+            print(cell)
             cell.seq.text = "\(indexPath.row + 1)"
             cell.ansDescription.text = "\(answer.pAa_description)"
             cell.ansDescription.textColor = UIColor(hexString: answer.pAnswerStyle.pAs_text_color)
@@ -109,7 +109,7 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(TEXTBOX_IDENTIFIER)){
             
-            var cell:AnswerTxtTableViewCell = tableView.dequeueReusableCellWithIdentifier("CellTxt") as! AnswerTxtTableViewCell
+            let cell:AnswerTxtTableViewCell = tableView.dequeueReusableCellWithIdentifier("CellTxt") as! AnswerTxtTableViewCell
             cell.seq.text = "\(indexPath.row + 1)";
             if(answer.pChecked == true){
                 if(String(answer.pTextFromTxtBox) != nil){
@@ -124,7 +124,7 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
         }else if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_IDENTIFIER)){
             
-            var cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
+            let cell:AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! AnswerTableViewCell
             cell.seq.text = "\(indexPath.row + 1)";
             cell.ansDescription.text = "\(answer.pAa_description)"
             cell.ansDescription.textColor = UIColor(hexString: answer.pAnswerStyle.pAs_text_color)
@@ -142,7 +142,7 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }else if((answer.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_TEXTBOX_IDENTIFIER)) ||
                  (answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER))){
             
-            var cell:AnswerTxtChkTableViewCell = tableView.dequeueReusableCellWithIdentifier("CellTxtChk") as! AnswerTxtChkTableViewCell
+            let cell:AnswerTxtChkTableViewCell = tableView.dequeueReusableCellWithIdentifier("CellTxtChk") as! AnswerTxtChkTableViewCell
             cell.seq.text = "\(indexPath.row + 1)";
             cell.ansDescription.text = "\(answer.pAa_description)"
             cell.ansDescription.textColor = UIColor(hexString: answer.pAnswerStyle.pAs_text_color)
@@ -204,10 +204,10 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         if(answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER) ||
            answer.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_IDENTIFIER)){
-            var arrayRefresh:NSMutableArray = NSMutableArray()
+           
             answer.pChecked = true
-            arrayRefresh.addObject(indexPath)
-            self.tableView.reloadRowsAtIndexPaths(arrayRefresh as [AnyObject], withRowAnimation: UITableViewRowAnimation.None)
+        
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
         }
     }
     func answerTxtTableViewCell(cell: AnswerTxtTableViewCell, shouldInputString string: NSString) {
@@ -216,19 +216,19 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath!.row) as! MAnswer
         
         answer.pTextFromTxtBox = string
-        println(string)
+        print(string)
     }
     func answerTxtChkTableViewCell(cell: AnswerTxtChkTableViewCell, shouldInputString string: NSString) {
         let indexPath = self.tableView!.indexPathForCell(cell as UITableViewCell)
         let answer:MAnswer = question.pAnswers.objectAtIndex(indexPath!.row) as! MAnswer
         
         answer.pTextFromTxtBox = string
-        println(string)
+        print(string)
     }
     func resetAnotherRadio(answerSelected:MAnswer){
         //RESET ANOTHER RADIO
         var i:NSInteger = 0
-        var arrayRefresh:NSMutableArray = NSMutableArray()
+        let arrayRefresh:NSMutableArray = NSMutableArray()
         for ans:MAnswer in question.pAnswers as Array as! [MAnswer] {
             if answerSelected.pAa_id != ans.pAa_id {
                 if ans.pAnswerStyle.pAs_identifier == RADIO_IDENTIFIER ||
@@ -241,7 +241,8 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
             }
             i++
         }
-        self.tableView.reloadRowsAtIndexPaths(arrayRefresh as [AnyObject], withRowAnimation: UITableViewRowAnimation.Fade)
+        let converArray:NSArray = NSArray(array: arrayRefresh)
+        self.tableView.reloadRowsAtIndexPaths(converArray as! [NSIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         /////////////////////
     }
     func setDefaultRadio(){

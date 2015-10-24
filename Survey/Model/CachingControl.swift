@@ -30,10 +30,11 @@ var cachingImagePJOnMemory:NSMutableDictionary = NSMutableDictionary()
 
 class CachingControl: NSObject {
     
-    class func getCache(identifier:CachingIdentifier, retriveCacheSuccess: (AnyObject!) -> Void , neverStore: () -> Void){
+    class func getCache(identifier:CachingIdentifier, retriveCacheSuccess: (AnyObject!) -> Void , neverStore: () -> Void)
+    {
         if(identifier == CachingIdentifier.Survey){
             if let surveyCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("\(KEY_SURVEYS_CACHE)_\(Session.sharedInstance.project_selected)") {
-                var list = NSKeyedUnarchiver.unarchiveObjectWithData(surveyCache as! NSData) as? NSMutableArray
+                let list = NSKeyedUnarchiver.unarchiveObjectWithData(surveyCache as! NSData) as? NSMutableArray
 
                 retriveCacheSuccess(list)
             }else{
@@ -41,7 +42,7 @@ class CachingControl: NSObject {
             }
         }else if(identifier == CachingIdentifier.SurVeyResultList){
             if let resultListCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey("\(KEY_SURVEYS_RESULT_LIST_CACHE)_\(Session.sharedInstance.project_selected)") {
-                var list = NSKeyedUnarchiver.unarchiveObjectWithData(resultListCache as! NSData) as? NSMutableArray
+                let list = NSKeyedUnarchiver.unarchiveObjectWithData(resultListCache as! NSData) as? NSMutableArray
                 
                 retriveCacheSuccess(list)
             }else{
@@ -49,7 +50,7 @@ class CachingControl: NSObject {
             }
         }else if(identifier == CachingIdentifier.SurveyImage){
             if let resultListCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(KEY_IMAGES_SURVEYS) {
-                var list = NSKeyedUnarchiver.unarchiveObjectWithData(resultListCache as! NSData) as? NSMutableArray
+                let list = NSKeyedUnarchiver.unarchiveObjectWithData(resultListCache as! NSData) as? NSMutableArray
                 
                 retriveCacheSuccess(list)
             }else{
@@ -58,10 +59,10 @@ class CachingControl: NSObject {
         }else if(identifier == CachingIdentifier.Session){
             if let resultCache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(KEY_SESSION) {
                 
-                println(resultCache)
+                print(resultCache)
                 
-                var list:NSArray = (NSKeyedUnarchiver.unarchiveObjectWithData(resultCache as! NSData) as? NSMutableArray)!
-                println("dict =\(list[0])")
+                let list:NSArray = (NSKeyedUnarchiver.unarchiveObjectWithData(resultCache as! NSData) as? NSMutableArray)!
+                //println("dict =\(list[0])")
                 
                 retriveCacheSuccess(list[0])
             }else{
@@ -126,7 +127,7 @@ class CachingControl: NSObject {
     class func clearCacheDynamicKey(key:NSString, retriveCacheSuccess: (AnyObject!) -> Void , neverStoreData neverStore: () -> Void){
         
         if let cache: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(key as String) {
-            var list: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(cache as! NSData)
+            let list: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(cache as! NSData)
             retriveCacheSuccess(list)
         }else{
             neverStore()

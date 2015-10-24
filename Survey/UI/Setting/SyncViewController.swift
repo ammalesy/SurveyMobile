@@ -19,7 +19,7 @@ class SyncViewController: UIViewController {
         MSync.syncToServer({ (message) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 AlertUtil.showAlertSuccess("Success", detail: message, completion: { () -> Void! in
-                    println(message)
+                    print(message)
                 })
                 
                 self.lastUpdateSendSurveyLB.text =  DateUtil.dateFormater().stringFromDate(NSDate())
@@ -38,16 +38,16 @@ class SyncViewController: UIViewController {
     }
     @IBAction func updateSurveysAction(sender: AnyObject) {
         
-        var loading:SCLAlertView =  AlertUtil.showWaiting()
+        let loading:SCLAlertView =  AlertUtil.showWaiting()
         MSurvey.get_surveys({ (surveys) -> Void in
             loading.hideView()
             
             CachingControl.getCache(CachingIdentifier.Survey, retriveCacheSuccess: { (cacheSurveys) -> Void in
                 
                 for(var index = 0; index < surveys.count; index++){
-                    var serverSurvey:MSurvey = surveys[index] as! MSurvey
+                    let serverSurvey:MSurvey = surveys[index] as! MSurvey
                     for(var i = 0; i < cacheSurveys.count; i++){
-                        var cacheSurvey:MSurvey = cacheSurveys[i] as! MSurvey
+                        let cacheSurvey:MSurvey = cacheSurveys[i] as! MSurvey
                         if(cacheSurvey.pSm_id == serverSurvey.pSm_id){
                             serverSurvey.pCountUser = cacheSurvey.pCountUser
                         }
@@ -92,11 +92,11 @@ class SyncViewController: UIViewController {
         
         
         /*======== LEFT BAR BUTTON ITEM ==========*/
-        var menuBarButton:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu_66"), style: UIBarButtonItemStyle.Plain, target: self, action: "toggleSideMenu")
+        let menuBarButton:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu_66"), style: UIBarButtonItemStyle.Plain, target: self, action: "toggleSideMenu")
         menuBarButton.tintColor = UIColor.whiteColor()
         self.navigationItem.leftBarButtonItem = menuBarButton
         /*======== RIGHT BAR BUTTON ITEM ==========*/
-        var listProjectBarButton:UIBarButtonItem = UIBarButtonItem(title: "List project", style: UIBarButtonItemStyle.Plain, target: self, action: "goToListProject:")
+        let listProjectBarButton:UIBarButtonItem = UIBarButtonItem(title: "List project", style: UIBarButtonItemStyle.Plain, target: self, action: "goToListProject:")
         listProjectBarButton.tintColor = UIColor.whiteColor()
         self.navigationItem.rightBarButtonItem = listProjectBarButton
     }

@@ -31,7 +31,7 @@
 		18CDABD11BCA9D9000C6BF44 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDABD01BCA9D9000C6BF44 /* Extension.swift */; };
 		18EF0F381BC6C089002698EF /* SurveyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF0F371BC6C089002698EF /* SurveyCollectionViewController.swift */; };
 		18FBA6841BC941DA00494A2A /* SurveyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FBA6831BC941DA00494A2A /* SurveyCollectionViewCell.swift */; };
-		1CA4316D941FECADB35CE95C /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D862BE129D867B84F554F6 /* Pods_Survey.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1CA4316D941FECADB35CE95C /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D862BE129D867B84F554F6 /* Pods_Survey.framework */; };
 		5222FC521BA44F5800DB5C33 /* MSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222FC511BA44F5800DB5C33 /* MSurvey.swift */; };
 		5222FC541BA4503E00DB5C33 /* CachingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222FC531BA4503E00DB5C33 /* CachingControl.swift */; };
 		5222FC561BA451AA00DB5C33 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222FC551BA451AA00DB5C33 /* Model.swift */; };
@@ -46,8 +46,6 @@
 		529959E91BA7ADF40058EACC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959E81BA7ADF40058EACC /* Reachability.swift */; };
 		529959EB1BA7B6040058EACC /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959EA1BA7B6040058EACC /* AlertUtil.swift */; };
 		529959ED1BA7BA200058EACC /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529959EC1BA7BA200058EACC /* ColorUtil.swift */; };
-		52B8681F1BA1EDB300A6B1BB /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8681D1BA1EDB300A6B1BB /* ENSideMenu.swift */; };
-		52B868201BA1EDB300A6B1BB /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8681E1BA1EDB300A6B1BB /* ENSideMenuNavigationController.swift */; };
 		52CDD9351B998F1A00E462A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDD9341B998F1A00E462A3 /* AppDelegate.swift */; };
 		52CDD9381B998F1A00E462A3 /* Survey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52CDD9361B998F1A00E462A3 /* Survey.xcdatamodeld */; };
 		52CDD93D1B998F1A00E462A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CDD93B1B998F1A00E462A3 /* Main.storyboard */; };
@@ -109,8 +107,6 @@
 		529959E81BA7ADF40058EACC /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		529959EA1BA7B6040058EACC /* AlertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		529959EC1BA7BA200058EACC /* ColorUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
-		52B8681D1BA1EDB300A6B1BB /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
-		52B8681E1BA1EDB300A6B1BB /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		52CDD92F1B998F1A00E462A3 /* Survey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Survey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CDD9331B998F1A00E462A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52CDD9341B998F1A00E462A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -224,8 +220,6 @@
 		529635831B99906A0065842E /* ThiredParty */ = {
 			isa = PBXGroup;
 			children = (
-				52B8681D1BA1EDB300A6B1BB /* ENSideMenu.swift */,
-				52B8681E1BA1EDB300A6B1BB /* ENSideMenuNavigationController.swift */,
 			);
 			path = ThiredParty;
 			sourceTree = "<group>";
@@ -398,7 +392,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = dev.com;
 				TargetAttributes = {
 					52CDD92E1B998F1A00E462A3 = {
@@ -515,7 +509,6 @@
 				529959E41BA71F890058EACC /* MQuestion.swift in Sources */,
 				184254A41BD38F4A0066E142 /* StartViewController.swift in Sources */,
 				1814206F1BD2AA5F0014E556 /* ProjectCollectionViewCell.swift in Sources */,
-				52B8681F1BA1EDB300A6B1BB /* ENSideMenu.swift in Sources */,
 				184254A21BD36BB20066E142 /* SideMenuTableViewCell.swift in Sources */,
 				529959DE1BA711EB0058EACC /* SurveyTableViewController.swift in Sources */,
 				184254A01BD36AFD0066E142 /* SideMenuTableViewController.swift in Sources */,
@@ -536,7 +529,6 @@
 				1814206D1BD2A7050014E556 /* ProjectCollectionViewController.swift in Sources */,
 				529959DD1BA711EB0058EACC /* SurveyTableViewCell.swift in Sources */,
 				522DE30F1BA7FD9500349045 /* SurveyViewController.swift in Sources */,
-				52B868201BA1EDB300A6B1BB /* ENSideMenuNavigationController.swift in Sources */,
 				18EF0F381BC6C089002698EF /* SurveyCollectionViewController.swift in Sources */,
 				52CDD9381B998F1A00E462A3 /* Survey.xcdatamodeld in Sources */,
 				529959E91BA7ADF40058EACC /* Reachability.swift in Sources */,
@@ -606,7 +598,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -622,7 +616,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -651,6 +646,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -661,7 +657,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -683,6 +680,7 @@
 				INFOPLIST_FILE = Survey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -704,6 +702,7 @@
 				INFOPLIST_FILE = Survey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -725,6 +724,7 @@
 				);
 				INFOPLIST_FILE = SurveyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Survey.app/Survey";
 			};
@@ -740,6 +740,7 @@
 				);
 				INFOPLIST_FILE = SurveyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Survey.app/Survey";
 			};

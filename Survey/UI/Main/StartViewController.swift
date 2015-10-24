@@ -37,8 +37,8 @@ class StartViewController: UIViewController {
     @IBOutlet weak var startSurveyButton: UIButton!
     @IBAction func startSurveyAction(sender: AnyObject) {
         
-        var sb = UIStoryboard(name: "Main",bundle: nil);
-        var controller:MainSurveyViewController = sb.instantiateViewControllerWithIdentifier("MainSurveyViewController") as! MainSurveyViewController
+        let sb = UIStoryboard(name: "Main",bundle: nil);
+        let controller:MainSurveyViewController = sb.instantiateViewControllerWithIdentifier("MainSurveyViewController") as! MainSurveyViewController
         controller.user = user
         controller.survey = survey
         self.navigationController?.pushViewController(controller, animated: true)
