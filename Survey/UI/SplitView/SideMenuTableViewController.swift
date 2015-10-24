@@ -87,7 +87,7 @@ class SideMenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        println("Selected row: \(indexPath.row)")
+        print("Selected row: \(indexPath.row)")
         
         if (indexPath.row == selectedMenuItem) {
             return
@@ -100,7 +100,7 @@ class SideMenuTableViewController: UITableViewController {
         var destViewController : UIViewController
         switch (indexPath.row) {
         case 0:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainMenu") as! UIViewController
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainMenu") 
             self.splitViewController?.showDetailViewController(destViewController, sender: nil)
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
                 
@@ -113,7 +113,7 @@ class SideMenuTableViewController: UITableViewController {
             
             break
         case 1:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NAVSetting") as! UIViewController
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NAVSetting") 
             
 
             self.splitViewController?.showDetailViewController(destViewController, sender: nil)

@@ -21,7 +21,7 @@ class MSurvey: Model,NSCoding,NSCopying {
     
     
     //Temporaty
-    var pSm_imageData:UIImage!
+    var pSm_imageData:UIImage?
     
     //associate
     var pQuestions:NSMutableArray!
@@ -87,7 +87,7 @@ class MSurvey: Model,NSCoding,NSCopying {
         CachingControl.getCache(CachingIdentifier.Survey, retriveCacheSuccess: { (surveys) -> Void in
             
             for(var i = 0; i<surveys.count; i++){
-                var cacheSurvey:MSurvey = surveys[i] as! MSurvey
+                let cacheSurvey:MSurvey = surveys[i] as! MSurvey
                 if(self.pSm_id == cacheSurvey.pSm_id){
                     cacheSurvey.pCountUser = self.pCountUser
                 }
@@ -105,95 +105,107 @@ class MSurvey: Model,NSCoding,NSCopying {
             failure("Please open the internet.")
             
         }else{
-            
-            Alamofire.request(.GET,
-                "\(Model.basePath.url)/SurveyManagement/surveys?project_name=\(Session.sharedInstance.project_selected)",
-                parameters: nil,
-                encoding:ParameterEncoding.JSON)
-                .responseString { _, _, string, _ in
+            Alamofire.request(.GET, "\(Model.basePath.url)/SurveyManagement/surveys?project_name=\(Session.sharedInstance.project_selected)", parameters: nil)
+                .responseJSON { response in
+                    print(response.request)  // original URL request
+                    print(response.response) // URL response
+                    print(response.data)     // server data
+                    print(response.result)   // result of response serialization
                     
-                    println(string)
-                    
-                }
-                .responseJSON { _, response, JSON, error in
-                    if(response?.statusCode == 200){
-                        var json:NSMutableArray = JSON as! NSMutableArray
-                        
-                        var list:NSMutableArray = NSMutableArray()
-                        for(var indexMain = 0; indexMain < json.count; indexMain++){
+                    if let JSON = response.result.value {
+                        if(response.response?.statusCode == 200){
+                            let json:NSMutableArray = JSON as! NSMutableArray
                             
-                            var survey:MSurvey = MSurvey()
-                            survey.pSm_id = survey.handleNullString(json[indexMain].objectForKey("sm_id")!)
-                            survey.pSm_name = survey.handleNullString(json[indexMain].objectForKey("sm_name")!)
-                            survey.pSm_description = survey.handleNullString(json[indexMain].objectForKey("sm_description")!)
-                            survey.pSm_table_code = survey.handleNullString(json[indexMain].objectForKey("sm_table_code")!)
-                            survey.pSm_order_column = survey.handleNullString(json[indexMain].objectForKey("sm_order_column")!)
-                            survey.pSm_update_at = survey.handleNullString(json[indexMain].objectForKey("sm_update_at")!)
-                            survey.pSm_image_id = survey.handleNullString(json[indexMain].objectForKey("sm_image")!)
-                            
-                            survey.pCountUser = 0
-                            
-                            /*======================*/
-                            /*======questions=======*/
-                            /*======================*/
-                            var questions:NSMutableArray = survey.handleNullArray(json[indexMain].objectForKey("questions")!)
-                            var listQuestion:NSMutableArray = NSMutableArray()
-                            for(var indexQuestion = 0; indexQuestion < questions.count; indexQuestion++){
-                                var isActive = survey.handleNullString(questions[indexQuestion].objectForKey("active")!)
-                                if(isActive.isEqualToString("N")){continue;}
+                            let list:NSMutableArray = NSMutableArray()
+                            for(var indexMain = 0; indexMain < json.count; indexMain++){
                                 
-                                var m_question:MQuestion = MQuestion()
-                                m_question.pAq_id = survey.handleNullString(questions[indexQuestion].objectForKey("aq_id")!)
-                                m_question.pAq_description = survey.handleNullString(questions[indexQuestion].objectForKey("aq_description")!)
-                                m_question.pActive = survey.handleNullString(questions[indexQuestion].objectForKey("active")!)
+                                let survey:MSurvey = MSurvey()
+                                survey.pSm_id = survey.handleNullString(json[indexMain].objectForKey("sm_id")!)
+                                survey.pSm_name = survey.handleNullString(json[indexMain].objectForKey("sm_name")!)
+                                survey.pSm_description = survey.handleNullString(json[indexMain].objectForKey("sm_description")!)
+                                survey.pSm_table_code = survey.handleNullString(json[indexMain].objectForKey("sm_table_code")!)
+                                survey.pSm_order_column = survey.handleNullString(json[indexMain].objectForKey("sm_order_column")!)
+                                survey.pSm_update_at = survey.handleNullString(json[indexMain].objectForKey("sm_update_at")!)
+                                survey.pSm_image_id = survey.handleNullString(json[indexMain].objectForKey("sm_image")!)
+                                
+                                survey.pCountUser = 0
                                 
                                 /*======================*/
-                                /*======answers=========*/
+                                /*======questions=======*/
                                 /*======================*/
-                     
-                                var answers:NSMutableArray = survey.handleNullArray(questions[indexQuestion].objectForKey("answers")!)
-                                var listAnswer:NSMutableArray = NSMutableArray()
-                                for(var indexAns = 0; indexAns < answers.count; indexAns++){
-                                    var m_answer:MAnswer = MAnswer()
-                                    m_answer.pAa_id = survey.handleNullString(answers[indexAns].objectForKey("aa_id")!)
-                                    m_answer.pAa_description = survey.handleNullString(answers[indexAns].objectForKey("aa_description")!)
-                                    m_answer.pAa_image = survey.handleNullString(answers[indexAns].objectForKey("aa_image")!)
-                                    m_answer.pAq_id_ref = survey.handleNullString(answers[indexAns].objectForKey("aq_id_ref")!)
-                                    m_answer.pType = survey.handleNullString(answers[indexAns].objectForKey("type")!)
-                                    m_answer.pAa_color = survey.handleNullString(answers[indexAns].objectForKey("aa_color")!)
-                                    m_answer.pActive = survey.handleNullString(answers[indexAns].objectForKey("active")!)
+                                let questions:NSMutableArray = survey.handleNullArray(json[indexMain].objectForKey("questions")!)
+                                let listQuestion:NSMutableArray = NSMutableArray()
+                                for(var indexQuestion = 0; indexQuestion < questions.count; indexQuestion++){
+                                    let isActive = survey.handleNullString(questions[indexQuestion].objectForKey("active")!)
+                                    if(isActive.isEqualToString("N")){continue;}
                                     
-
-                                    var styleDict:NSDictionary = answers[indexAns].objectForKey("style")! as! NSDictionary
-                                    var style:MAnswerStyle = MAnswerStyle()
-                                    style.pAs_id = survey.handleNullString(styleDict.objectForKey("as_id")!)
-                                    style.pAs_name = survey.handleNullString(styleDict.objectForKey("as_name")!)
-                                    style.pAs_description = survey.handleNullString(styleDict.objectForKey("as_description")!)
-                                    style.pAs_identifier = survey.handleNullString(styleDict.objectForKey("as_identifier")!)
-                                    style.pAs_text_color = survey.handleNullString(styleDict.objectForKey("as_text_color")!)
+                                    let m_question:MQuestion = MQuestion()
+                                    m_question.pAq_id = survey.handleNullString(questions[indexQuestion].objectForKey("aq_id")!)
+                                    m_question.pAq_description = survey.handleNullString(questions[indexQuestion].objectForKey("aq_description")!)
+                                    m_question.pActive = survey.handleNullString(questions[indexQuestion].objectForKey("active")!)
                                     
-                                    m_answer.pAnswerStyle = style
-                                    if(m_answer.pAnswerStyle.pAs_identifier.isEqualToString(TEXTBOX_IDENTIFIER)){
-                                        m_answer.pChecked = true
-                                    }else{
-                                        m_answer.pChecked = false
+                                    /*======================*/
+                                    /*======answers=========*/
+                                    /*======================*/
+                                    
+                                    let answers:NSMutableArray = survey.handleNullArray(questions[indexQuestion].objectForKey("answers")!)
+                                    let listAnswer:NSMutableArray = NSMutableArray()
+                                    for(var indexAns = 0; indexAns < answers.count; indexAns++){
+                                        let m_answer:MAnswer = MAnswer()
+                                        m_answer.pAa_id = survey.handleNullString(answers[indexAns].objectForKey("aa_id")!)
+                                        m_answer.pAa_description = survey.handleNullString(answers[indexAns].objectForKey("aa_description")!)
+                                        m_answer.pAa_image = survey.handleNullString(answers[indexAns].objectForKey("aa_image")!)
+                                        m_answer.pAq_id_ref = survey.handleNullString(answers[indexAns].objectForKey("aq_id_ref")!)
+                                        m_answer.pType = survey.handleNullString(answers[indexAns].objectForKey("type")!)
+                                        m_answer.pAa_color = survey.handleNullString(answers[indexAns].objectForKey("aa_color")!)
+                                        m_answer.pActive = survey.handleNullString(answers[indexAns].objectForKey("active")!)
+                                        
+                                        
+                                        let styleDict:NSDictionary = answers[indexAns].objectForKey("style")! as! NSDictionary
+                                        let style:MAnswerStyle = MAnswerStyle()
+                                        style.pAs_id = survey.handleNullString(styleDict.objectForKey("as_id")!)
+                                        style.pAs_name = survey.handleNullString(styleDict.objectForKey("as_name")!)
+                                        style.pAs_description = survey.handleNullString(styleDict.objectForKey("as_description")!)
+                                        style.pAs_identifier = survey.handleNullString(styleDict.objectForKey("as_identifier")!)
+                                        style.pAs_text_color = survey.handleNullString(styleDict.objectForKey("as_text_color")!)
+                                        
+                                        m_answer.pAnswerStyle = style
+                                        if(m_answer.pAnswerStyle.pAs_identifier.isEqualToString(TEXTBOX_IDENTIFIER)){
+                                            m_answer.pChecked = true
+                                        }else{
+                                            m_answer.pChecked = false
+                                        }
+                                        
+                                        listAnswer.addObject(m_answer)
                                     }
+                                    m_question.pAnswers = listAnswer
                                     
-                                    listAnswer.addObject(m_answer)
+                                    listQuestion.addObject(m_question)
                                 }
-                                m_question.pAnswers = listAnswer
-                                
-                                listQuestion.addObject(m_question)
+                                survey.pQuestions = listQuestion
+                                list.addObject(survey)
                             }
-                            survey.pQuestions = listQuestion
-                            list.addObject(survey)
+                            completionHandler(list)
+                        }else{
+                            let json:NSDictionary = JSON as! NSDictionary
+                            failure(json.objectForKey("Error") as! NSString)
                         }
-                        completionHandler(list)
-                    }else{
-                        var json:NSDictionary = JSON as! NSDictionary
-                        failure(json.objectForKey("Error") as! NSString)
                     }
             }
+            ////////
+            
+//            Alamofire.request(.GET,
+//                "\(Model.basePath.url)/SurveyManagement/surveys?project_name=\(Session.sharedInstance.project_selected)",
+//                parameters: nil,
+//                encoding:ParameterEncoding.JSON)
+//                .responseString { _, _, string, _ in
+//                    
+//                    println(string)
+//                    
+//                }
+//                .responseJSON { _, response, JSON, error in
+//                    
+//            }
         }
         
     }

@@ -52,7 +52,7 @@ class AnswerTxtTableViewCell: UITableViewCell,UITextFieldDelegate {
         var stringConcat = "\(textField.text)\(string)" as NSString
         if(string == ""){
             if(textField.text != ""){
-                stringConcat = textField.text as NSString
+                stringConcat = textField.text!
                 stringConcat = String(stringConcat).substringToIndex(String(stringConcat).endIndex.predecessor())
             }
         }

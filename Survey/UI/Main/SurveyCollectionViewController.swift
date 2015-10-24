@@ -9,21 +9,22 @@
 import UIKit
 import SCLAlertView
 
-let reuseIdentifier = "Cell"
+let reuseIdentifier_survey = "CellSurvey"
 
-class SurveyCollectionViewController: UICollectionViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SurveyCollectionViewCellDelegate {
+class SurveyCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout,SurveyCollectionViewCellDelegate {
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+//        self.collectionView!.registerClass(SurveyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier_survey)
         
         /*======== LEFT BAR BUTTON ITEM ==========*/
-        var menuBarButton:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu_66"), style: UIBarButtonItemStyle.Plain, target: self, action: "toggleSideMenu")
+        let menuBarButton:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu_66"), style: UIBarButtonItemStyle.Plain, target: self, action: "toggleSideMenu")
         self.navigationItem.leftBarButtonItem = menuBarButton
         /*======== RIGHT BAR BUTTON ITEM ==========*/
-        var refreshBarButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refreshData:")
+        let refreshBarButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refreshData:")
         refreshBarButton.tintColor = UIColor.whiteColor()
-        var listProjectBarButton:UIBarButtonItem = UIBarButtonItem(title: "List project", style: UIBarButtonItemStyle.Plain, target: self, action: "goToListProject:")
+        let listProjectBarButton:UIBarButtonItem = UIBarButtonItem(title: "List project", style: UIBarButtonItemStyle.Plain, target: self, action: "goToListProject:")
         self.navigationItem.rightBarButtonItems = [listProjectBarButton,refreshBarButton]
         
 
@@ -34,8 +35,8 @@ class SurveyCollectionViewController: UICollectionViewController,UICollectionVie
         self.navigationItem.title = String(Session.sharedInstance.project_name_selected)
         //self.sideMenuController()?.sideMenu?.delegate = self
         
-        self.collectionView?.delegate = self
-        self.collectionView?.dataSource = self
+//        self.collectionView?.delegate = self
+//        self.collectionView?.dataSource = self
         
         self.syncQuestionFromServer { () -> Void in
             self.navigationItem.prompt = "Surveys (\(AppDelegate.getDelegate().surveys.count))"
@@ -84,7 +85,7 @@ class SurveyCollectionViewController: UICollectionViewController,UICollectionVie
             completionHandler()
             
         }) { () -> Void in
-                var loadingView:SCLAlertView =  AlertUtil.showWaiting()
+                let loadingView:SCLAlertView =  AlertUtil.showWaiting()
                 MSurvey.get_surveys({ (surveys) -> Void in
                     loadingView.hideView()
                     AppDelegate.getDelegate().surveys = surveys
@@ -113,7 +114,7 @@ class SurveyCollectionViewController: UICollectionViewController,UICollectionVie
     
     @IBAction func openLeftPanel(sender: AnyObject)
     {
-        toggleSideMenuView()
+        //toggleSideMenuView()
     }
 
     // MARK: UICollectionViewDataSource
@@ -131,8 +132,9 @@ class SurveyCollectionViewController: UICollectionViewController,UICollectionVie
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
-        var survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
-        let cell:SurveyCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! SurveyCollectionViewCell
+        print(AppDelegate.getDelegate().surveys)
+        let survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
+        let cell:SurveyCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier_survey, forIndexPath: indexPath) as! SurveyCollectionViewCell
         
         cell.delegate = self
         
@@ -142,16 +144,16 @@ class SurveyCollectionViewController: UICollectionViewController,UICollectionVie
         cell.pCountUserLabel.text = String(survey.pCountUser)
         cell.pImageView.image = UIImage(named: "default_icon_survey")
         
-        println(survey.pSm_imageData)
+        print(survey.pSm_imageData)
         
         //Retrive On Memory
-        var imageOnMem:UIImage? = cachingImageOnMemory.objectForKey(survey.pSm_image_id) as? UIImage
+        let imageOnMem:UIImage? = cachingImageOnMemory.objectForKey(survey.pSm_image_id) as? UIImage
         if(imageOnMem == nil){
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
                 
-                var url:NSURL = NSURL(string: "\(Model.imagePath.url)/\(survey.pSm_image_id)")!
-                var data = NSData(contentsOfURL: url)
-                var image:UIImage = UIImage(data: data!)!
+                let url:NSURL = NSURL(string: "\(Model.imagePath.url)/\(survey.pSm_image_id)")!
+                let data = NSData(contentsOfURL: url)
+                let image:UIImage = UIImage(data: data!)!
               
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
@@ -174,23 +176,23 @@ class SurveyCollectionViewController: UICollectionViewController,UICollectionVie
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        var bounds = UIScreen.mainScreen().bounds
-        var size = CGSizeMake((bounds.size.width/2)-30, 250)
+        let bounds = UIScreen.mainScreen().bounds
+        let size = CGSizeMake((bounds.size.width/2)-30, 250)
         return size
         
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        var survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
-        var user:MUser = MUser()
+        let survey:MSurvey = AppDelegate.getDelegate().surveys.objectAtIndex(indexPath.row) as! MSurvey
+        let user:MUser = MUser()
         user.pU_firstname = "dummy"
         user.pU_surname = "dummy"
-        user.pU_age = "23".toInt()
+        user.pU_age = Int("23")
         user.pU_sex = 0
         user.pU_email = "dummy"
         user.pU_tel = "dummy"
-        var sb = UIStoryboard(name: "Main",bundle: nil);
-        var controller:StartViewController = sb.instantiateViewControllerWithIdentifier("StartViewController") as! StartViewController
+        let sb = UIStoryboard(name: "Main",bundle: nil);
+        let controller:StartViewController = sb.instantiateViewControllerWithIdentifier("StartViewController") as! StartViewController
         controller.user = user
         controller.survey = survey.copy() as! MSurvey
         self.navigationController?.pushViewController(controller, animated: true)

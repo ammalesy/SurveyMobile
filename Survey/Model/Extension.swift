@@ -23,10 +23,10 @@ extension UIColor {
     
     convenience init(hexString:NSString) {
         var rgbValue:UInt32 = 0;
-        var scanner:NSScanner = NSScanner(string: hexString as String)
+        let scanner:NSScanner = NSScanner(string: hexString as String)
         scanner.scanLocation = 1
         scanner.scanHexInt(&rgbValue)
-        var hex:Int = Int(rgbValue)
+        let hex:Int = Int(rgbValue)
         self.init(red:(hex >> 16) & 0xff, green:(hex >> 8) & 0xff, blue:hex & 0xff)
     }
 }

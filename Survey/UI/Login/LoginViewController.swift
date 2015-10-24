@@ -22,28 +22,40 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if let text = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String {
-            var version = text.toDouble()
+            let version = text.toDouble()
             self.versionLabel.text = "  Version \(version!)"
         }
         
         
-        var session:Session =  Session.sharedInstance;
-        if(session.isLogin){
-
+        let session:Session =  Session.sharedInstance;
+        CachingControl.getCache(CachingIdentifier.Session, retriveCacheSuccess: { (dictCache) -> Void in
+            
+            print(dictCache)
+            
+            session.a_id = (dictCache as! NSDictionary).objectForKey("a_id") as! NSString
+            session.a_user = (dictCache as! NSDictionary).objectForKey("a_user") as! NSString
+            session.a_name = (dictCache as! NSDictionary).objectForKey("a_name") as! NSString
+            session.last_login = (dictCache as! NSDictionary).objectForKey("last_login") as! NSString
+            session.isLogin = true
             session.getProject({ (project) -> Void in
                 self.goMainPage()
             }, failur: { () -> Void in
-                AlertUtil.showAlertError("Error!", detail: "System error!")
+                    AlertUtil.showAlertError("Error!", detail: "System error!")
             })
             
-            
+        }) { () -> Void in
+            session.a_id = ""
+            session.a_user = ""
+            session.a_name = ""
+            session.last_login = ""
+            session.isLogin = false
         }
     }
     
     func goMainPage(){
         
-        var sb:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var contoller:UINavigationController = sb.instantiateViewControllerWithIdentifier("NavPJ") as! UINavigationController
+        let sb:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let contoller:UINavigationController = sb.instantiateViewControllerWithIdentifier("NavPJ") as! UINavigationController
         
         self.presentViewController(contoller, animated: true) { () -> Void in
             
@@ -55,7 +67,7 @@ class LoginViewController: UIViewController {
 
    
     @IBAction func loginAction(sender: AnyObject) {
-        var session:Session =  Session.sharedInstance;
+        let session:Session =  Session.sharedInstance;
         if (a_userTxt.text != "" && a_passTxt != ""){
             
             session.login(a_userTxt.text, a_pass: a_passTxt.text, success: { (session) -> Void in

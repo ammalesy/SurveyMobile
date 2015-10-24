@@ -25,7 +25,7 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         self.navigationItem.rightBarButtonItem = doneButton
 //        doneButton.enabled = false
         
-        var pageControl = UIPageControl.appearance()
+        let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = ColorUtil.orangeLight()
         pageControl.currentPageIndicatorTintColor = ColorUtil.darkGray()
         pageControl.backgroundColor = UIColor.whiteColor()
@@ -35,7 +35,9 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         self.pageViewController.delegate = self
         
         let startingViewController = self.viewController(0) as SurveyViewController
-        self.pageViewController.setViewControllers([startingViewController.0], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+        self.pageViewController.setViewControllers([startingViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+        
+        
         self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         
         self.addChildViewController(self.pageViewController)
@@ -49,12 +51,12 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
     
     func sendSurvey(buttonItem:UIBarButtonItem) {
         
-        var mul:NSMutableArray = survey.pQuestions;
-        var sync:MSync = MSync.convertToSyncFormat(survey, user: user)
+        //var mul:NSMutableArray = survey.pQuestions;
+        let sync:MSync = MSync.convertToSyncFormat(survey, user: user)
         
         CachingControl.getCache(CachingIdentifier.SurVeyResultList, retriveCacheSuccess: { (listCache) -> Void in
             
-            var list:NSMutableArray = listCache as! NSMutableArray
+            let list:NSMutableArray = listCache as! NSMutableArray
             list.addObject(sync)
             CachingControl.setCache(CachingIdentifier.SurVeyResultList, data: list)
     
@@ -74,9 +76,9 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
             }
             
         }) { () -> Void in
-            var list:NSMutableArray = NSMutableArray()
+            let list:NSMutableArray = NSMutableArray()
             list.addObject(sync)
-            println(list[0].description)
+            print(list[0].description)
             CachingControl.setCache(CachingIdentifier.SurVeyResultList, data: list)
             
             AlertUtil.showAlertSuccess("Succesfully", detail: "Thank you very much.", completion: { () -> Void! in
@@ -91,13 +93,20 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         
     }
 
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
+//    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
+//        
+//        let controller:SurveyViewController = pendingViewControllers[0] as! SurveyViewController
+//        currentIndex = controller.pageIndex
+////        if((controller.pageIndex + 1) == survey.pQuestions.count){
+////            doneButton.enabled = true
+////        }
+//    }
+    
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
         
-        var controller:SurveyViewController = pendingViewControllers[0] as! SurveyViewController
+        let controller:SurveyViewController = pendingViewControllers[0] as! SurveyViewController
         currentIndex = controller.pageIndex
-//        if((controller.pageIndex + 1) == survey.pQuestions.count){
-//            doneButton.enabled = true
-//        }
+        
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
@@ -131,7 +140,7 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         
     }
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        var pageControl = UIPageControl.appearance()
+        let pageControl = UIPageControl.appearance()
         
         if(survey.pQuestions.count > 18) {
             pageControl.numberOfPages = 18

@@ -46,15 +46,15 @@ class MSync: Model,NSCoding {
         sync.pU_email = user.pU_email
         sync.pU_tel = user.pU_tel
         
-        var resultConvert:NSMutableDictionary = NSMutableDictionary()
+        let resultConvert:NSMutableDictionary = NSMutableDictionary()
         for(var i = 0; i < survey.pQuestions.count; i++){
             
-            var theKey = "q_\((survey.pQuestions[i] as! MQuestion).pAq_id)"
+            let theKey = "q_\((survey.pQuestions[i] as! MQuestion).pAq_id)"
             
-            var listAnswer:NSMutableArray = (survey.pQuestions[i] as! MQuestion).pAnswers
-            var ansConvert:NSString = ""
+            let listAnswer:NSMutableArray = (survey.pQuestions[i] as! MQuestion).pAnswers
+            //var ansConvert:NSString = ""
             
-            var listAns:NSMutableArray = NSMutableArray()
+            let listAns:NSMutableArray = NSMutableArray()
             for ans:MAnswer in listAnswer as Array as! [MAnswer] {
                 if (ans.pChecked == true) {
                     
@@ -76,10 +76,18 @@ class MSync: Model,NSCoding {
 //            if(ansConvert != "") {
 //                ansConvert = ansConvert.substringFromIndex(1)
 //            }
-            let data = NSJSONSerialization.dataWithJSONObject(listAns, options: nil, error: nil)
-            let jsonString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            println(jsonString!)
-            resultConvert.setValue(jsonString, forKey: theKey)
+            
+            do {
+                if let data:NSData = try NSJSONSerialization.dataWithJSONObject(listAns, options: []) {
+                    let jsonString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    print(jsonString!)
+                    resultConvert.setValue(jsonString, forKey: theKey)
+                }
+            } catch {
+                print(error)
+            }
+            
+            
         }
         sync.pResult = resultConvert
         
@@ -88,7 +96,7 @@ class MSync: Model,NSCoding {
     }
     func toJson() -> AnyObject!{
         
-        var json:NSMutableDictionary = NSMutableDictionary()
+        let json:NSMutableDictionary = NSMutableDictionary()
         json.setObject(self.pU_firstname, forKey: "u_firstname")
         json.setObject(self.pU_surname, forKey: "u_surname")
         json.setObject(self.pSm_id_ref, forKey: "sm_id_ref")
@@ -134,27 +142,43 @@ class MSync: Model,NSCoding {
         
         CachingControl.getCache(CachingIdentifier.SurVeyResultList, retriveCacheSuccess: { (listCache) -> Void in
             
-            var param:NSMutableArray = NSMutableArray()
+            let param:NSMutableArray = NSMutableArray()
             for sync:MSync in listCache as! Array as [MSync] {
                 param.addObject(sync.toJson())
             }
             let postParam = ["data":param,"project_name":Session.sharedInstance.project_selected]
-            Alamofire.request(.POST,
-                "\(Model.basePath.url)/SyncDataManager/sync",
-                parameters: postParam,
-                encoding:ParameterEncoding.JSON)
-                .responseString { _, _, string, _ in
+//            Alamofire.request(.POST,
+//                "\(Model.basePath.url)/SyncDataManager/sync",
+//                parameters: postParam,
+//                encoding:ParameterEncoding.JSON)
+//                .responseString { _, _, string, _ in
+//                    
+//                    println(string)
+//                    
+//                }.responseJSON { _, response, JSON, _ in
+//                    
+//                    if(response!.statusCode == 200){
+//                        success(message: "Sync data complete")
+//                    }else{
+//                        failur(message: "Sync data fail!")
+//                    }
+//                    
+//            }
+            //////
+            Alamofire.request(.POST, "\(Model.basePath.url)/SyncDataManager/sync", parameters: postParam)
+                .responseJSON { response in
+                    print(response.request)  // original URL request
+                    print(response.response) // URL response
+                    print(response.data)     // server data
+                    print(response.result)   // result of response serialization
                     
-                    println(string)
-                    
-                }.responseJSON { _, response, JSON, _ in
-                    
-                    if(response!.statusCode == 200){
-                        success(message: "Sync data complete")
-                    }else{
-                        failur(message: "Sync data fail!")
+                    if let _ = response.result.value {
+                        if(response.response!.statusCode == 200){
+                            success(message: "Sync data complete")
+                        }else{
+                            failur(message: "Sync data fail!")
+                        }
                     }
-                    
             }
             
         }) { () -> Void in

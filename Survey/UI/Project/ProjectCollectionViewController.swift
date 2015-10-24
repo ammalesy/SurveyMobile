@@ -8,20 +8,20 @@
 
 import UIKit
 
-//let reuseIdentifier = "Cell"
+let reuseIdentifier = "Cell"
 
-class ProjectCollectionViewController: UICollectionViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class ProjectCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var logo:UIImage = UIImage(named: "logo_survey")!
+        let logo:UIImage = UIImage(named: "logo_survey")!
         self.navigationItem.titleView = UIImageView(image: logo)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         self.navigationItem.prompt = "\(Session.sharedInstance.a_name)"
     }
@@ -64,11 +64,11 @@ class ProjectCollectionViewController: UICollectionViewController,UICollectionVi
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var project:MProject = Project.sharedInstance.listProject.objectAtIndex(indexPath.row) as! MProject
+        let project:MProject = Project.sharedInstance.listProject.objectAtIndex(indexPath.row) as! MProject
         let cell:ProjectCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("CellPj", forIndexPath: indexPath) as! ProjectCollectionViewCell
         
-        println(Project.sharedInstance.listProject)
-        println(project.pPj_name)
+        print(Project.sharedInstance.listProject)
+        print(project.pPj_name)
         // Configure the cell
         cell.pSeq.text = String(indexPath.row + 1)
         cell.pTitleLabel.text = String(project.pPj_name)
@@ -77,13 +77,13 @@ class ProjectCollectionViewController: UICollectionViewController,UICollectionVi
           
         
         //Retrive On Memory
-        var imageOnMem:UIImage? = cachingImagePJOnMemory.objectForKey(project.pPj_image) as? UIImage
+        let imageOnMem:UIImage? = cachingImagePJOnMemory.objectForKey(project.pPj_image) as? UIImage
         if(imageOnMem == nil){
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
                 
-                var url:NSURL = NSURL(string: "\(Model.imageProjectPath.url)/\(project.pPj_image)")!
-                var data = NSData(contentsOfURL: url)
-                var image:UIImage = UIImage(data: data!)!
+                let url:NSURL = NSURL(string: "\(Model.imageProjectPath.url)/\(project.pPj_image)")!
+                let data = NSData(contentsOfURL: url)
+                let image:UIImage = UIImage(data: data!)!
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
@@ -107,21 +107,21 @@ class ProjectCollectionViewController: UICollectionViewController,UICollectionVi
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         
-        var bounds = UIScreen.mainScreen().bounds
+        let bounds = UIScreen.mainScreen().bounds
         
-        var size = CGSizeMake((bounds.size.width/2)-30, 250)
+        let size = CGSizeMake((bounds.size.width/2)-30, 250)
         return size
         
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         
-        var project:MProject = Project.sharedInstance.listProject.objectAtIndex(indexPath.row) as! MProject
+        let project:MProject = Project.sharedInstance.listProject.objectAtIndex(indexPath.row) as! MProject
         Session.sharedInstance.project_selected = project.pPj_db_ref
         Session.sharedInstance.project_name_selected = project.pPj_name
 
-        var sb = UIStoryboard(name: "Main",bundle: nil);
-        var controller:SplitViewController = sb.instantiateViewControllerWithIdentifier("SplitViewController") as! SplitViewController
+        let sb = UIStoryboard(name: "Main",bundle: nil);
+        let controller:SplitViewController = sb.instantiateViewControllerWithIdentifier("SplitViewController") as! SplitViewController
         
         
         self.presentViewController(controller, animated: true) { () -> Void in
