@@ -11,7 +11,8 @@ import UIKit
 
 class Model: NSObject {
     struct serverPath {
-        static var url:NSString = "http://192.168.1.8/Survey"
+        //static var url:NSString = "http://192.168.1.8/Survey"
+        static var url:NSString = "http://homecondoshowcase.com/Survey"
     }
     struct basePath {
         static var url:NSString = "\(Model.serverPath.url)/api"

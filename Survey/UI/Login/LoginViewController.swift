@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
         if let text = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String {
             let version = text.toDouble()
+            print(version)
             self.versionLabel.text = "  Version \(version!)"
         }
         

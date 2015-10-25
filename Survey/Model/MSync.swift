@@ -147,6 +147,7 @@ class MSync: Model,NSCoding {
                 param.addObject(sync.toJson())
             }
             let postParam = ["data":param,"project_name":Session.sharedInstance.project_selected]
+            print(postParam)
 //            Alamofire.request(.POST,
 //                "\(Model.basePath.url)/SyncDataManager/sync",
 //                parameters: postParam,
@@ -165,20 +166,22 @@ class MSync: Model,NSCoding {
 //                    
 //            }
             //////
-            Alamofire.request(.POST, "\(Model.basePath.url)/SyncDataManager/sync", parameters: postParam)
+            Alamofire.request(.POST, "\(Model.basePath.url)/SyncDataManager/sync",
+                parameters: postParam,
+                encoding: ParameterEncoding.JSON)
                 .responseJSON { response in
                     print(response.request)  // original URL request
                     print(response.response) // URL response
                     print(response.data)     // server data
                     print(response.result)   // result of response serialization
                     
-                    if let _ = response.result.value {
+                    //if let _ = response.result.value {
                         if(response.response!.statusCode == 200){
                             success(message: "Sync data complete")
                         }else{
                             failur(message: "Sync data fail!")
                         }
-                    }
+                    //}
             }
             
         }) { () -> Void in
