@@ -26,7 +26,7 @@ class StartViewController: UIViewController {
         startSurveyButton.layer.masksToBounds = true
         
         surveyNameLabel.text = "Survey name : \(survey.pSm_name)"
-        questionCoutLabel.text = "Question : \(survey.pQuestions.count)"
+        questionCoutLabel.text = "Total Questions : \(survey.pQuestions.count)"
         
     }
 
@@ -44,7 +44,14 @@ class StartViewController: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
-    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "Cancel"
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.survey.resetAnswer()
+    }
 
     /*
     // MARK: - Navigation

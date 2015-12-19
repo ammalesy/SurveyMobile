@@ -25,6 +25,8 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
     @IBOutlet weak var questionLb: UILabel!
     @IBOutlet weak var seqLb: UILabel!
+    @IBOutlet weak var prevBtn: UIButton!
+    @IBOutlet weak var nextBtn: UIButton!
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -37,12 +39,34 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+    
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.mainController.navigationItem.title = "Question \(self.pageIndex + 1) / \(self.mainController.survey.pQuestions.count)"
+        
         });
         
+        
+        self.prevNextButtonDetector()
+        
     }
+    func prevNextButtonDetector(){
+        if(self.pageIndex == 0){
+            self.prevBtn.alpha = 0
+        }else{
+            self.prevBtn.alpha = 1
+        }
+        
+        if(self.mainController.survey.pQuestions.count > 1){
+            self.nextBtn.alpha = 1
+        }else{
+            self.nextBtn.alpha = 0
+        }
+        
+        if(self.pageIndex == (self.mainController.survey.pQuestions.count - 1)){
+            self.nextBtn.alpha = 0
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -273,4 +297,10 @@ class SurveyViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
     }
 
+    @IBAction func prevAction(sender: AnyObject) {
+        self.mainController.prevPage()
+    }
+    @IBAction func nextAction(sender: AnyObject) {
+        self.mainController.nextPage()
+    }
 }

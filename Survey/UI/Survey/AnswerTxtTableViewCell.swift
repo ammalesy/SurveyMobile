@@ -49,7 +49,8 @@ class AnswerTxtTableViewCell: UITableViewCell,UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
-        var stringConcat = "\(textField.text)\(string)" as NSString
+        var stringConcat = "\(textField.text!)\(string)" as NSString
+        print(stringConcat)
         if(string == ""){
             if(textField.text != ""){
                 stringConcat = textField.text!

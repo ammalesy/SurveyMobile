@@ -9,38 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Survey/UI/Survey/MainSurveyViewController.swift"
-            timestampString = "467364053.172767"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "sendSurvey(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Survey/UI/Survey/MainSurveyViewController.swift"
-            timestampString = "467364053.172767"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "sendSurvey(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Survey/UI/MyMenuTableViewController.swift"
             timestampString = "466796011.400521"
             startingColumnNumber = "9223372036854775807"
@@ -89,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Survey/ShareObject/Session.swift"
-            timestampString = "467368900.202633"
+            filePath = "Survey/UI/Survey/MainSurveyViewController.swift"
+            timestampString = "472230561.400925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "init()"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "sendSurvey(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Survey/ShareObject/Session.swift"
-            timestampString = "467369518.213001"
+            filePath = "Survey/UI/Survey/MainSurveyViewController.swift"
+            timestampString = "472230561.400925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "login(_:a_pass:success:failur:)"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "pageViewController(_:willTransitionToViewControllers:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Survey/Model/MSync.swift"
-            timestampString = "467376981.499509"
+            filePath = "Survey/UI/Survey/MainSurveyViewController.swift"
+            timestampString = "472230561.400925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "syncToServer(_:failur:)"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "presentationCountForPageViewController(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,14 +105,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Survey/Model/MSync.swift"
-            timestampString = "467375325.031962"
+            filePath = "Survey/UI/Survey/MainSurveyViewController.swift"
+            timestampString = "472230561.400925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "syncToServer(_:failur:)"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "presentationIndexForPageViewController(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Survey.MainSurveyViewController.presentationIndexForPageViewController (Survey.MainSurveyViewController)(__ObjC.UIPageViewController) -&gt; Swift.Int"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/MainSurveyViewController.swift"
+                  timestampString = "472230194.848502"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "10">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Survey.MainSurveyViewController.presentationIndexForPageViewController (Survey.MainSurveyViewController)(__ObjC.UIPageViewController) -&gt; Swift.Int"
+                  moduleName = "Survey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/SurveyMobile/Survey/UI/Survey/MainSurveyViewController.swift"
+                  timestampString = "472230194.848905"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "17">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

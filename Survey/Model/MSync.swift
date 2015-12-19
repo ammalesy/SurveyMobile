@@ -64,8 +64,10 @@ class MSync: Model,NSCoding {
                              ans.pAnswerStyle.pAs_identifier.isEqualToString(CHECKBOX_TEXTBOX_IDENTIFIER) ||
                              ans.pAnswerStyle.pAs_identifier.isEqualToString(RADIO_TEXTBOX_IDENTIFIER))
                     {
-                        listAns.addObject(["aa_id":ans.pAa_id,
-                                            "text":ans.pTextFromTxtBox])
+                        if(!ans.pTextFromTxtBox.isEqualToString("")){
+                            listAns.addObject(["aa_id":ans.pAa_id,
+                                "text":ans.pTextFromTxtBox])
+                        }
                     }else{
                         listAns.addObject(["aa_id":ans.pAa_id])
                     }

@@ -24,6 +24,9 @@ class MAnswer: Model,NSCoding,NSCopying {
     //temporary
     var pTextFromTxtBox:NSString = ""
     
+    func clearAnswerData(){
+        self.pTextFromTxtBox = "";
+    }
     func copyWithZone(zone: NSZone) -> AnyObject {
         let obj:MAnswer = MAnswer()
         obj.pAa_id = self.pAa_id

@@ -97,6 +97,15 @@ class MSurvey: Model,NSCoding,NSCopying {
             
         }
     }
+    func resetAnswer(){
+        for(var i = 0; i<self.pQuestions.count; i++){
+            let question:MQuestion = self.pQuestions[i] as! MQuestion
+            for(var indentIndex = 0; indentIndex<question.pAnswers.count; indentIndex++){
+                let answer:MAnswer = question.pAnswers[indentIndex] as! MAnswer
+                answer.clearAnswerData()
+            }
+        }
+    }
     
     class func get_surveys(completionHandler: (NSMutableArray) -> Void, failure: (NSString!) -> Void){
         

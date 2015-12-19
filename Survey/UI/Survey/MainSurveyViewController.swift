@@ -19,11 +19,14 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        
         currentIndex = 0
         
         doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "sendSurvey:")
         self.navigationItem.rightBarButtonItem = doneButton
-//        doneButton.enabled = false
+        doneButton.enabled = false
         
         let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = ColorUtil.orangeLight()
@@ -49,6 +52,26 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         
     }
     
+    func nextPage(){
+        print(currentIndex)
+        self.gotoPage(currentIndex+1, isNext: true)
+        currentIndex = currentIndex+1
+        print(currentIndex)
+    }
+    func prevPage(){
+        self.gotoPage(currentIndex-1, isNext: false)
+        currentIndex = currentIndex-1
+    }
+    func gotoPage(pageNumber:NSInteger,isNext:Bool){
+        let viewcontroller = self.viewController(pageNumber) as SurveyViewController
+        
+        var direction:UIPageViewControllerNavigationDirection = UIPageViewControllerNavigationDirection.Forward
+        if(isNext == false){
+            direction = UIPageViewControllerNavigationDirection.Reverse
+        }
+        
+        self.pageViewController.setViewControllers([viewcontroller], direction: direction, animated: true, completion: nil)
+    }
     func sendSurvey(buttonItem:UIBarButtonItem) {
         
         //var mul:NSMutableArray = survey.pQuestions;
@@ -106,6 +129,12 @@ class MainSurveyViewController: UIViewController,UIPageViewControllerDataSource,
         
         let controller:SurveyViewController = pendingViewControllers[0] as! SurveyViewController
         currentIndex = controller.pageIndex
+        
+        if((controller.pageIndex + 1) == survey.pQuestions.count){
+            doneButton.enabled = true
+        }else{
+            doneButton.enabled = false
+        }
         
     }
     
